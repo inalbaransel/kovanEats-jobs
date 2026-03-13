@@ -1,3 +1,9 @@
+export type Question = {
+  id: string;
+  label: string;
+  placeholder: string;
+};
+
 export type Job = {
   id: string;
   slug: string;
@@ -6,9 +12,7 @@ export type Job = {
   description: string;
   responsibilities: string[];
   expectations: string[];
-  customQuestion: string;
-  customQuestionLabel: string;
-  customQuestionPlaceholder: string;
+  customQuestions: Question[];
 };
 
 export const jobs: Job[] = [
@@ -29,10 +33,31 @@ export const jobs: Job[] = [
       "Siber güvenlik protokollerine (JWT, OAuth, Encryption) hakimiyet.",
       "Hızlı ve temiz kod yazımı.",
     ],
-    customQuestion: "security_approach",
-    customQuestionLabel:
-      "Bir SQL Injection saldırısını veya yetkisiz erişimi engellemek için ilk 3 savunma hattın nedir?",
-    customQuestionPlaceholder: "Örn: Middleware doğrulaması, veri temizleme...",
+    customQuestions: [
+      {
+        id: "be_q1",
+        label:
+          "Node.js ile hiç REST API geliştirdin mi? Hangi kütüphaneleri kullandın? (Express, NestJS vb.)",
+        placeholder: "Evet/Hayır. Express/NestJS kullandım...",
+      },
+      {
+        id: "be_q2",
+        label: "Daha önce hiç PostgreSQL ve Prisma ikilisiyle çalıştın mı?",
+        placeholder: "Evet/Hayır. Şu projede kullandım...",
+      },
+      {
+        id: "be_q3",
+        label:
+          "Projelerini canlıya alırken hiç Hetzner, AWS veya Vercel gibi platformları kullandın mı?",
+        placeholder: "Evet, Vercel/Hetzner kullandım...",
+      },
+      {
+        id: "be_q4",
+        label:
+          "Docker veya basit sunucu yönetimi (Ubuntu/Nginx) hakkında bilgin var mı?",
+        placeholder: "Evet, Docker kullanabiliyorum...",
+      },
+    ],
   },
   {
     id: "2",
@@ -51,10 +76,32 @@ export const jobs: Job[] = [
       "GSAP kütüphanesine hakimiyet.",
       "Göz yormayan estetik bakış açısı.",
     ],
-    customQuestion: "frontend_showcase",
-    customQuestionLabel:
-      "En çok gurur duyduğun projenin linki veya performans taktiğin?",
-    customQuestionPlaceholder: "https://...",
+    customQuestions: [
+      {
+        id: "fe_q1",
+        label:
+          "Hiç Figma/Adobe XD tasarımını birebir kodladığın bir projen oldu mu?",
+        placeholder: "Evet, pixel-perfect çalışma tecrübem var...",
+      },
+      {
+        id: "fe_q2",
+        label:
+          "Next.js ve Tailwind CSS ikilisine ne kadar hakimsin? (1-10 arası puanla)",
+        placeholder: "10 üzerinden 8 diyebilirim...",
+      },
+      {
+        id: "fe_q3",
+        label:
+          "Basit animasyonlar için hiç GSAP veya Framer Motion kullandın mı?",
+        placeholder: "Evet/Hayır. Framer Motion kullandım...",
+      },
+      {
+        id: "fe_q4",
+        label:
+          "Kullanıcının mobil ve web deneyimi arasındaki farklara ne kadar dikkat edersin?",
+        placeholder: "Responsive tasarıma çok önem veririm...",
+      },
+    ],
   },
   {
     id: "3",
@@ -73,14 +120,37 @@ export const jobs: Job[] = [
       "Minimalist ve modern tasarım çizgisi.",
       "Güçlü bir portfolyo.",
     ],
-    customQuestion: "portfolio_link",
-    customQuestionLabel: "Behance veya Dribbble portfolyonu buraya bırak.",
-    customQuestionPlaceholder: "https://behance.net/...",
+    customQuestions: [
+      {
+        id: "vd_q1",
+        label:
+          "Tasarım süreçlerinde ağırlıklı olarak hangi araçları (Figma, Adobe vb.) kullanıyorsun?",
+        placeholder: "Genelde Figma ve Illustrator kullanıyorum...",
+      },
+      {
+        id: "vd_q2",
+        label:
+          "Daha önce hiç sıfırdan bir marka logosu veya kurumsal kimlik tasarladın mı?",
+        placeholder: "Evet, birkaç marka için logo tasarımı yaptım...",
+      },
+      {
+        id: "vd_q3",
+        label:
+          "Sosyal medya içeriği tasarlarken trendleri nasıl takip edersin?",
+        placeholder: "Behance ve Pinterest üzerinden takip ediyorum...",
+      },
+      {
+        id: "vd_q4",
+        label:
+          "İnceleyebileceğimiz bir Behance/Dribbble linki bırakabilir misin?",
+        placeholder: "https://behance.net/...",
+      },
+    ],
   },
   {
     id: "4",
     slug: "video-motion",
-    title: "Video Designer (After Effects Master)",
+    title: "Video Designer",
     subtitle: "Videolarımıza ruh ve hareket kat.",
     description:
       "After Effects'i piyano gibi çalan, videolarımıza o 'pro' geçişleri ekleyecek, kurgu ve animasyon dehası birini arıyoruz.",
@@ -94,9 +164,31 @@ export const jobs: Job[] = [
       "Motion design trendlerine hakimiyet.",
       "Hızlı kurgu yeteneği.",
     ],
-    customQuestion: "showreel",
-    customQuestionLabel: "En iyi işlerinden oluşan showreel linkin?",
-    customQuestionPlaceholder: "YouTube/Drive/Vimeo linki...",
+    customQuestions: [
+      {
+        id: "vm_q1",
+        label:
+          "After Effects'te motion grafik yapma konusunda ne kadar tecrübelisin?",
+        placeholder: "2 yıldır After Effects ile çalışıyorum...",
+      },
+      {
+        id: "vm_q2",
+        label:
+          "Daha çok kurgu mu (Premiere) yoksa animasyon mu (AE) tarafını seviyorsun?",
+        placeholder: "Animasyon tarafı daha ağır basıyor...",
+      },
+      {
+        id: "vm_q3",
+        label:
+          "Bir videoya ses efekti (SFX) ekleme konusunda ne kadar dikkatlisin?",
+        placeholder: "Videonun ruhu sestir, çok dikkat ederim...",
+      },
+      {
+        id: "vm_q4",
+        label: "En son hazırladığın bir işin (Showreel) veya portfolyo linkin?",
+        placeholder: "YouTube/Drive linki...",
+      },
+    ],
   },
   {
     id: "5",
@@ -115,18 +207,39 @@ export const jobs: Job[] = [
       "Video kurgu (CapCut vb.) ve trend bilgisi.",
       "Kamera önünde doğal ve enerjik olmak.",
     ],
-    customQuestion: "social_media",
-    customQuestionLabel:
-      "Kamera önündeki enerjini görebileceğimiz bir profil linki (Instagram/TikTok)?",
-    customQuestionPlaceholder: "@kullaniciadi",
+    customQuestions: [
+      {
+        id: "bf_q1",
+        label:
+          "Kamera karşısında konuşma ve içerik üretme konusunda kendine ne kadar güveniyorsun? (1-10 arası)",
+        placeholder: "10 üzerinden 9 diyebilirim...",
+      },
+      {
+        id: "bf_q2",
+        label:
+          "Daha önce TikTok veya Reels için hiç içerik çektin mi? Kendi kurgunu yapabilir misin?",
+        placeholder: "Evet, CapCut ile kurgularımı yaparım...",
+      },
+      {
+        id: "bf_q3",
+        label: "Sosyal medyadaki güncel trendleri ne sıklıkla takip ediyorsun?",
+        placeholder: "Her gün düzenli takip ediyorum...",
+      },
+      {
+        id: "bf_q4",
+        label:
+          "Senin göründüğün örnek bir sosyal medya hesabın veya video linkin?",
+        placeholder: "@kullaniciadi",
+      },
+    ],
   },
   {
     id: "6",
     slug: "growth-sales",
-    title: "İş Geliştirme ve Saha Temsilcisi (6 Kişi)",
+    title: "İş Geliştirme ve Saha Temsilcisi (4 Kişi)",
     subtitle: "Buzdolabını eskimoya satacak kadar iddialı mısın?",
     description:
-      "Sahaya inecek, esnafı masaya oturtacak ve restoranları tek tek Kovan'a bağlayacak, ağzı iyi laf yapan 6 kaplan arıyoruz.",
+      "Sahaya inecek, esnafı masaya oturtacak ve restoranları tek tek Kovan'a bağlayacak, ağzı iyi laf yapan 4 kaplan arıyoruz.",
     responsibilities: [
       "Restoran ve esnaf ziyaretleri yaparak iş ortaklığı kurmak.",
       "Müşteri bulma süreçlerini (Cold calling & Saha) yönetmek.",
@@ -137,10 +250,28 @@ export const jobs: Job[] = [
       "Diksiyonu düzgün ve temsil yeteneği olan.",
       "Hedef odaklı çalışma disiplini.",
     ],
-    customQuestion: "sales_pitch",
-    customQuestionLabel:
-      "Teknolojiye karşı olan bir esnafı ikna edecek ilk cümlen ne olurdu?",
-    customQuestionPlaceholder: "Kısa bir cevap yaz kanka...",
+    customQuestions: [
+      {
+        id: "gs_q1",
+        label: "İnsanları ikna etme kabiliyetine 10 üzerinden kaç verirsin?",
+        placeholder: "10 üzerinden 9...",
+      },
+      {
+        id: "gs_q2",
+        label: "Daha önce hiç satış, anket veya saha çalışması yaptın mı?",
+        placeholder: "Evet, daha önce anket çalışması yapmıştım...",
+      },
+      {
+        id: "gs_q3",
+        label: "Reddedildiğinde motivasyonunu nasıl korursun?",
+        placeholder: "Hemen bir sonrakine odaklanırım...",
+      },
+      {
+        id: "gs_q4",
+        label: "Neden KovanEats ekibinde yer almak istiyorsun?",
+        placeholder: "Büyüyen bir startup'ın parçası olmak istiyorum...",
+      },
+    ],
   },
   {
     id: "7",
@@ -159,10 +290,32 @@ export const jobs: Job[] = [
       "Veri analitiği ve raporlama becerisi.",
       "Daha önce yönetilmiş başarılı reklam bütçeleri.",
     ],
-    customQuestion: "ads_strategy",
-    customQuestionLabel:
-      "Elimizdeki kısıtlı bütçeyle en hızlı dönüşümü (conversion) hangi kanaldan alırdın?",
-    customQuestionPlaceholder: "Stratejini kısaca anlat...",
+    customQuestions: [
+      {
+        id: "ms_q1",
+        label:
+          "Daha önce Facebook/Instagram üzerinden hiç reklam yönetimi yaptın mı?",
+        placeholder: "Evet, Meta Ads Manager kullandım...",
+      },
+      {
+        id: "ms_q2",
+        label:
+          "Google Analytics veya piksel kurulumu gibi teknik terimlere ne kadar hakimsin?",
+        placeholder: "Evet, piksel kurabiliyorum...",
+      },
+      {
+        id: "ms_q3",
+        label:
+          "Reklam bütçesini en verimli şekilde kullanmak senin için ne ifade ediyor?",
+        placeholder: "Düşük maliyetle yüksek dönüşüm odaklıyım...",
+      },
+      {
+        id: "ms_q4",
+        label:
+          "Hiç başarılı bir reklam kampanyanı veya sonucunu bizimle paylaşabilir misin?",
+        placeholder: "Evet, şu projede ROAS değerini 4 yaptım...",
+      },
+    ],
   },
 ];
 

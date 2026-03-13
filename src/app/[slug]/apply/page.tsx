@@ -19,7 +19,7 @@ export default async function JobApplyPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div className="flex-1 flex flex-col w-full bg-neutral-50 py-12 md:py-20 relative">
+    <div className="flex-1 flex flex-col w-full py-12 md:py-20 relative">
       {/* Background Decor */}
       <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-neutral-200/50 blur-[100px] rounded-[100%] pointer-events-none -z-10" />
 
