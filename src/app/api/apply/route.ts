@@ -27,6 +27,8 @@ export async function POST(req: Request) {
         email,
         portfolio: portfolio || "",
         answers: answers || {},
+        status: "pending",
+        read: false,
         createdAt: serverTimestamp(),
       });
     } catch (firebaseErr: any) {
