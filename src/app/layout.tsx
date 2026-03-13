@@ -16,15 +16,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
-      <body className={`${inter.className} min-h-screen flex flex-col antialiased bg-white text-neutral-900`}>
+      <body
+        className={`${inter.className} min-h-screen flex flex-col antialiased bg-white text-neutral-900`}
+      >
         {/* Main Content */}
-        <main className="flex-1 flex flex-col pt-8">
-          {children}
-        </main>
+        <main className="flex-1 flex flex-col pt-8">{children}</main>
 
         {/* Footer */}
-        <footer className="w-full border-t border-neutral-100 py-8 text-center text-sm text-neutral-400">
-          <p>© {new Date().getFullYear()} KovanEats. Tüm hakları saklıdır.</p>
+        <footer className="w-full py-12 flex flex-col items-center justify-center gap-6 bg-white">
+          <div className="flex flex-col items-center gap-3">
+            <span className="text-xs font-bold tracking-widest text-neutral-400 uppercase">
+              Powered By
+            </span>
+            <img
+              src="/kulüp_logo.png"
+              alt="Bilgisayar Kulübü"
+              className="h-16 w-auto object-contain hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100 grayscale-20 hover:grayscale-0"
+            />
+          </div>
         </footer>
       </body>
     </html>

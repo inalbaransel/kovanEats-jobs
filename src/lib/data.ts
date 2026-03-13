@@ -14,86 +14,156 @@ export type Job = {
 export const jobs: Job[] = [
   {
     id: "1",
-    slug: "tech",
-    title: "Tech",
-    subtitle: "Sistemin kalbini inşa et.",
-    description: "KovanEats'in altyapısını güçlendirecek, ölçeklenebilir ve modern yazılım çözümleri üretecek, yüksek trafikli anlarda bile sorunsuz çalışan bir ekosistem yaratacak yetenekler arıyoruz. Kod kalitesine önem veriyorsan ve modern teknolojilerle üretmek seni heyecanlandırıyorsa, tam yerindesin.",
+    slug: "backend-security",
+    title: "Backend & Security Architect",
+    subtitle: "Sistemin beyni ve koruyucusu ol.",
+    description:
+      "Node.js, PostgreSQL ve Prisma’ya fısıldayan; sistemin güvenliğini (Auth, veri şifreleme) en üst seviyede tutacak, 'hacker' zihninde bir mimar arıyoruz.",
     responsibilities: [
-      "Modern teknolojiler (Next.js, Node.js) kullanarak web ve mobil uygulamalar geliştirmek.",
-      "Yüksek performanslı, ölçeklenebilir ve güvenli kod yazmak.",
-      "Mevcut sistemin performans iyileştirmelerini ve hata çözümlerini yapmak.",
-      "Ürün ekibiyle birlikte çalışarak yeni özellikleri hayata geçirmek."
+      "Ölçeklenebilir API mimarileri tasarlamak ve güvenliği sağlamak.",
+      "Veritabanı optimizasyonu ve veri şifreleme süreçlerini yönetmek.",
+      "Sistemi olası siber saldırılara karşı monitor etmek ve zırhlamak.",
     ],
     expectations: [
-      "Modern JavaScript/TypeScript ekosistemine hakimiyet.",
-      "Problem çözme yeteneği ve analitik düşünce yapısı.",
-      "Takım çalışmasına yatkınlık ve sürekli öğrenme motivasyonu."
+      "Node.js ve PostgreSQL tecrübesi.",
+      "Siber güvenlik protokollerine (JWT, OAuth, Encryption) hakimiyet.",
+      "Hızlı ve temiz kod yazımı.",
     ],
-    customQuestion: "github",
-    customQuestionLabel: "GitHub Linkiniz",
-    customQuestionPlaceholder: "https://github.com/kullaniciadiniz"
+    customQuestion: "security_approach",
+    customQuestionLabel:
+      "Bir SQL Injection saldırısını veya yetkisiz erişimi engellemek için ilk 3 savunma hattın nedir?",
+    customQuestionPlaceholder: "Örn: Middleware doğrulaması, veri temizleme...",
   },
   {
     id: "2",
-    slug: "creative",
-    title: "Creative",
-    subtitle: "Görsel dünyamızı şekillendir.",
-    description: "Kullanıcı deneyimini sanatla buluşturan, markamızın ruhunu yansıtacak yaratıcı fikirler üreten, estetik detaylara önem veren vizyoner takım arkadaşları arıyoruz. Tasarımın sadece görsel olmadığını, aynı zamanda bir iletişim aracı olduğuna inanıyorsan bekliyoruz.",
+    slug: "frontend",
+    title: "Frontend Developer",
+    subtitle: "Temiz ve modern arayüzler tasarla.",
+    description:
+      "Next.js ve Tailwind CSS ile piksel mükemmeliyetinde işler çıkaran, GSAP ile animasyonun dibine vuran, estetik takıntılı bir büyücü arıyoruz.",
     responsibilities: [
-      "Web ve mobil platformlar için kullanıcı dostu arayüzler tasarlamak (UI/UX).",
-      "Sosyal medya ve pazarlama kampanyaları için görsel içerikler üretmek.",
-      "Marka kimliğini koruyarak yaratıcı konseptler geliştirmek."
+      "Kullanıcıyı yormayan, 'premium' hissettiren arayüzler kodlamak.",
+      "GSAP ve Framer Motion ile akışkan animasyonlar oluşturmak.",
+      "Responsive tasarımı her cihazda kusursuz çalıştırmak.",
     ],
     expectations: [
-      "Figma, Adobe Creative Suite programlarına hakimiyet.",
-      "Estetik algısı yüksek ve trendleri takip eden biri olmak.",
-      "Detaylara dikkat etmek ve kullanıcı odaklı düşünebilmek.",
-      "Güçlü bir tasarım portfolyosu sunabilmek."
+      "Next.js ve Tailwind CSS ustalığı.",
+      "GSAP kütüphanesine hakimiyet.",
+      "Göz yormayan estetik bakış açısı.",
     ],
-    customQuestion: "portfolio",
-    customQuestionLabel: "Behance / Dribbble veya Portfolyo Linkiniz",
-    customQuestionPlaceholder: "https://behance.net/kullaniciadiniz"
+    customQuestion: "frontend_showcase",
+    customQuestionLabel:
+      "En çok gurur duyduğun projenin linki veya performans taktiğin?",
+    customQuestionPlaceholder: "https://...",
   },
   {
     id: "3",
-    slug: "growth",
-    title: "Growth",
-    subtitle: "Sınırları zorla ve büyüt.",
-    description: "Veri odaklı stratejilerle, kullanıcı tabanımızı hızla büyütecek, yenilikçi fikirleri test edecek ve KovanEats'in dijital dünyadaki varlığını en üst seviyeye taşıyacak Growth Hacker'lar arıyoruz. Büyüme senin için bir hedef değil, tutkuysa bize katıl.",
+    slug: "visual-designer",
+    title: "Görsel Tasarımcı & Art Director (2 Kişi)",
+    subtitle: "Kovan'ın dijital kimliğini sen tasarla.",
+    description:
+      "Markanın logosundan ikonlarına, uygulama içi renk paletinden tipografisine kadar her şeyi sıfırdan yaratacak 2 vizyoner tasarımcı arıyoruz.",
     responsibilities: [
-      "Kullanıcı edinme ve elde tutma stratejileri geliştirmek.",
-      "A/B testleri kurgulamak, metrikleri analiz etmek ve raporlamak.",
-      "Yeni büyüme kanalları keşfetmek ve optimize etmek."
+      "Marka kimliğini ve kurumsal görsel dili oluşturmak.",
+      "Uygulama içi ikon ve illüstrasyon setleri hazırlamak.",
+      "Sosyal medya için yüksek kaliteli görsel içerikler üretmek.",
     ],
     expectations: [
-      "Veri analizi araçlarına aşinalık.",
-      "Hızlı test edebilen, analitik ve pragmatik bir yapıya sahip olmak.",
-      "Growth hacking konseptine hakimiyet ve sonuç odaklılık."
+      "Figma ve Adobe Illustrator/Photoshop ustalığı.",
+      "Minimalist ve modern tasarım çizgisi.",
+      "Güçlü bir portfolyo.",
     ],
-    customQuestion: "growth_tactic",
-    customQuestionLabel: "Bizi ilk 3 ayda nasıl büyütürdünüz? (Kısa İkna Taktiği)",
-    customQuestionPlaceholder: "Örnek: Kampüslerde etkinlikler yaparak viral büyüme sağlardım."
+    customQuestion: "portfolio_link",
+    customQuestionLabel: "Behance veya Dribbble portfolyonu buraya bırak.",
+    customQuestionPlaceholder: "https://behance.net/...",
   },
   {
     id: "4",
-    slug: "marketing",
-    title: "Marketing",
-    subtitle: "Hikayemizi herkese duyur.",
-    description: "Markamızın sesini en doğru şekilde hedef kitleye ulaştıracak, yaratıcı ve ölçülebilir pazarlama kampanyaları kurgulayacak, topluluğumuzu bir araya getirecek iletişim uzmanları arıyoruz. Trendleri sadece takip eden değil, trend yaratan olmak istiyorsan seni arıyoruz.",
+    slug: "video-motion",
+    title: "Video Designer (After Effects Master)",
+    subtitle: "Videolarımıza ruh ve hareket kat.",
+    description:
+      "After Effects'i piyano gibi çalan, videolarımıza o 'pro' geçişleri ekleyecek, kurgu ve animasyon dehası birini arıyoruz.",
     responsibilities: [
-      "Sosyal medya platformlarını yönetmek ve içerik stratejileri oluşturmak.",
-      "Marka bilinirliğini artıracak kampanyalar planlamak.",
-      "İçerik takvimini oluşturmak ve metin yazarlığı süreçlerini yürütmek."
+      "Uygulama tanıtım videoları ve reklam filmleri kurgulamak.",
+      "2D/3D motion graphics çalışmaları üretmek.",
+      "Ham görüntüleri After Effects ile sanat eserine dönüştürmek.",
     ],
     expectations: [
-      "Dijital pazarlama trendlerine ve sosyal medya dinamiklerine hakimiyet.",
-      "Güçlü iletişim becerileri ve yaratıcı metin yazarlığı yeteneği.",
-      "Kampanya yönetiminde tecrübe."
+      "After Effects ve Premiere Pro'da ileri seviye.",
+      "Motion design trendlerine hakimiyet.",
+      "Hızlı kurgu yeteneği.",
     ],
-    customQuestion: "campaign",
-    customQuestionLabel: "En sevdiğiniz sosyal medya kampanyası nedir ve neden?",
-    customQuestionPlaceholder: "Örnek: X markasının kampanyası çünkü..."
-  }
+    customQuestion: "showreel",
+    customQuestionLabel: "En iyi işlerinden oluşan showreel linkin?",
+    customQuestionPlaceholder: "YouTube/Drive/Vimeo linki...",
+  },
+  {
+    id: "5",
+    slug: "brand-face",
+    title: "Dijital İçerik Üreticisi (Reklam Yüzü)",
+    subtitle: "KovanEats'in enerjisi sen ol.",
+    description:
+      "Kamera karşısında kasmayan, TikTok ve Reels dilini ana dili gibi bilen, enerjisiyle uygulamayı binlerce kişiye indirecek o starı arıyoruz.",
+    responsibilities: [
+      "Günlük viral Reels ve TikTok içerikleri üretmek.",
+      "KovanEats topluluğu ile aktif etkileşim kurmak.",
+      "Markayı canlı yayınlarda ve etkinliklerde temsil etmek.",
+    ],
+    expectations: [
+      "Yüksek özgüven ve akıcı diksiyon.",
+      "Video kurgu (CapCut vb.) ve trend bilgisi.",
+      "Kamera önünde doğal ve enerjik olmak.",
+    ],
+    customQuestion: "social_media",
+    customQuestionLabel:
+      "Kamera önündeki enerjini görebileceğimiz bir profil linki (Instagram/TikTok)?",
+    customQuestionPlaceholder: "@kullaniciadi",
+  },
+  {
+    id: "6",
+    slug: "growth-sales",
+    title: "İş Geliştirme ve Saha Temsilcisi (6 Kişi)",
+    subtitle: "Buzdolabını eskimoya satacak kadar iddialı mısın?",
+    description:
+      "Sahaya inecek, esnafı masaya oturtacak ve restoranları tek tek Kovan'a bağlayacak, ağzı iyi laf yapan 6 kaplan arıyoruz.",
+    responsibilities: [
+      "Restoran ve esnaf ziyaretleri yaparak iş ortaklığı kurmak.",
+      "Müşteri bulma süreçlerini (Cold calling & Saha) yönetmek.",
+      "Satış hedeflerini tutturmak ve bölge analizi yapmak.",
+    ],
+    expectations: [
+      "Yüksek ikna kabiliyeti ve pes etmeyen yapı.",
+      "Diksiyonu düzgün ve temsil yeteneği olan.",
+      "Hedef odaklı çalışma disiplini.",
+    ],
+    customQuestion: "sales_pitch",
+    customQuestionLabel:
+      "Teknolojiye karşı olan bir esnafı ikna edecek ilk cümlen ne olurdu?",
+    customQuestionPlaceholder: "Kısa bir cevap yaz kanka...",
+  },
+  {
+    id: "7",
+    slug: "marketing-strategist",
+    title: "Dijital Pazarlama & Meta Ads Uzmanı",
+    subtitle: "Algoritmaları Kovan için çalıştır.",
+    description:
+      "Meta (Instagram/Facebook) ve Google Ads'in algoritmasını çözmüş, kuruşu kuruşuna hedefleme yaparak bizi mahallenin en popüler uygulaması yapacak stratejist.",
+    responsibilities: [
+      "Reklam bütçesini yönetmek ve ROI/ROAS takibi yapmak.",
+      "A/B testleri ile reklam kreatiflerini optimize etmek.",
+      "Piksel kurulumu ve conversion tracking süreçlerini yönetmek.",
+    ],
+    expectations: [
+      "Meta Ads Manager ve Google Ads ustalığı.",
+      "Veri analitiği ve raporlama becerisi.",
+      "Daha önce yönetilmiş başarılı reklam bütçeleri.",
+    ],
+    customQuestion: "ads_strategy",
+    customQuestionLabel:
+      "Elimizdeki kısıtlı bütçeyle en hızlı dönüşümü (conversion) hangi kanaldan alırdın?",
+    customQuestionPlaceholder: "Stratejini kısaca anlat...",
+  },
 ];
 
 export function getJobBySlug(slug: string): Job | undefined {

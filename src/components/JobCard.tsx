@@ -4,21 +4,25 @@ import { ArrowRight } from "lucide-react";
 
 export default function JobCard({ job }: { job: Job }) {
   return (
-    <div className="group relative bg-white border border-neutral-200 rounded-3xl p-8 hover:shadow-2xl hover:border-neutral-300 transition-all duration-500 flex flex-col justify-between h-[320px] overflow-hidden">
-      {/* Decorative Blob */}
-      <div className="absolute -top-24 -right-24 w-48 h-48 bg-neutral-100 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+    <div className="group relative bg-white border border-neutral-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] rounded-3xl p-8 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] hover:-translate-y-1.5 hover:border-neutral-300/80 transition-all duration-500 flex flex-col justify-between h-[320px] overflow-hidden">
+      {/* Decorative Background Glow */}
+      <div className="absolute -top-32 -right-32 w-80 h-80 bg-linear-to-br from-neutral-100 to-transparent rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
       <div className="relative z-10 flex flex-col gap-4">
-        <h2 className="text-3xl font-bold tracking-tight text-neutral-900 group-hover:text-black transition-colors">{job.title}</h2>
-        <p className="text-neutral-500 font-medium leading-relaxed">{job.subtitle}</p>
+        <h2 className="text-[28px] leading-tight font-extrabold tracking-tight text-neutral-900 group-hover:text-black transition-colors">
+          {job.title}
+        </h2>
+        <p className="text-neutral-500 font-medium leading-relaxed pr-2">
+          {job.subtitle}
+        </p>
       </div>
 
-      <div className="relative z-10 mt-auto pt-8 flex items-center justify-between border-t border-neutral-100">
+      <div className="relative z-10 mt-auto pt-6 flex items-center justify-between border-t border-neutral-100/80 group-hover:border-neutral-200 transition-colors duration-500">
         <Link 
           href={`/${job.slug}`}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-black hover:gap-3 transition-all"
+          className="inline-flex items-center gap-2 text-[15px] font-bold text-neutral-800 hover:text-black hover:gap-3 transition-all"
         >
-          Pozisyonları Gör <ArrowRight className="w-4 h-4" />
+          Detayları İncele <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
     </div>
