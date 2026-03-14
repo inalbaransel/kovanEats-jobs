@@ -94,8 +94,8 @@ export async function POST(request: Request) {
           `,
         );
         emailSent = true;
-      } catch (err: any) {
-        emailError = String(err);
+      } catch (err: unknown) {
+        emailError = err instanceof Error ? err.message : String(err);
         console.error("Brevo Error:", err);
       }
     }

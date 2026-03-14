@@ -7,7 +7,6 @@ import { jobs } from "@/lib/data";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     // GSAP Animations
@@ -43,19 +42,19 @@ export default function Home() {
       className="flex-1 flex flex-col items-center justify-center p-8 max-w-6xl mx-auto w-full min-h-[80vh]"
     >
       {/* Hero Section */}
-      <div className="text-center mb-16 max-w-2xl flex flex-col items-center">
-        <h1 className="hero-element flex items-center justify-center gap-3 md:gap-6 text-5xl md:text-7xl font-extrabold tracking-tighter text-neutral-900 mb-4">
-          <div className="flex items-center">
+      <div className="text-center mb-16 max-w-5xl flex flex-col items-center">
+        <h1 className="hero-element flex flex-row items-center justify-center gap-3 md:gap-4 text-4xl md:text-8xl font-extrabold tracking-tighter text-neutral-900 mb-4">
+          <div className="shrink-0">
             <img
               src="/kovanEats_logo.png"
               alt="Kovan Logo"
-              className="w-[150px] h-[150px] md:w-[230px] md:h-[230px] object-contain relative -top-2 md:-top-3"
+              className="w-[130px] md:w-[350px] h-auto object-contain relative -top-1 md:-top-3"
             />
           </div>
           <span className="text-neutral-400">Kariyer</span>
         </h1>
         <p className="hero-element text-lg text-neutral-500 font-medium">
-          KovanEats'te kariyer fırsatlarını keşfet.
+          KovanEats&apos;te kariyer fırsatlarını keşfet.
         </p>
       </div>
 

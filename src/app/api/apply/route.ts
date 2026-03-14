@@ -106,7 +106,7 @@ export async function POST(req: Request) {
           </html>
           `,
         );
-      } catch (mailErr) {
+      } catch (mailErr: unknown) {
         console.error("Brevo Error:", mailErr);
       }
     }
