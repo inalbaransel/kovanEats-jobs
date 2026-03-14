@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { Job } from "@/lib/data";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 export default function ApplicationForm({ job }: { job: Job }) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   const handleAnswerChange = (id: string, value: string) => {
     setAnswers((prev) => ({ ...prev, [id]: value }));
@@ -15,6 +17,12 @@ export default function ApplicationForm({ job }: { job: Job }) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      setError("Lütfen bot olmadığınızı doğrulayın.");
+      return;
+    }
+
     setLoading(true);
     setError("");
 
@@ -26,6 +34,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
       email: formData.get("email"),
       portfolio: formData.get("portfolio"),
       answers,
+      turnstileToken,
     };
 
     try {
@@ -35,7 +44,10 @@ export default function ApplicationForm({ job }: { job: Job }) {
         body: JSON.stringify(data),
       });
 
-      if (!res.ok) throw new Error("Özür dileriz, bir hata oluştu.");
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.error || "Özür dileriz, bir hata oluştu.");
+      }
 
       setSuccess(true);
       (e.target as HTMLFormElement).reset();
@@ -216,6 +228,15 @@ export default function ApplicationForm({ job }: { job: Job }) {
             </div>
           </div>
         )}
+
+        <div className="flex justify-center py-2">
+          <Turnstile
+            siteKey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || ""}
+            onSuccess={(token) => setTurnstileToken(token)}
+            onExpire={() => setTurnstileToken("")}
+            onError={() => setTurnstileToken("")}
+          />
+        </div>
 
         <button
           type="submit"

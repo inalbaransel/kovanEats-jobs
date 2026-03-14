@@ -31,13 +31,46 @@ async function sendBrevoEmail(
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { jobSlug, jobTitle, name, email, portfolio, answers } = data;
+    const {
+      jobSlug,
+      jobTitle,
+      name,
+      email,
+      portfolio,
+      answers,
+      turnstileToken,
+    } = data;
 
     if (!name || !email) {
       return NextResponse.json(
         { error: "İsim ve E-posta zorunludur." },
         { status: 400 },
       );
+    }
+
+    // 0. Verify Turnstile Token
+    if (process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY) {
+      const verifyRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            secret: process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY,
+            response: turnstileToken,
+          }),
+        },
+      );
+
+      const verifyData = await verifyRes.json();
+      if (!verifyData.success) {
+        return NextResponse.json(
+          { error: "Bot doğrulaması başarısız oldu. Lütfen tekrar deneyin." },
+          { status: 403 },
+        );
+      }
     }
 
     // 1. Save to Firebase Firestore
@@ -53,7 +86,7 @@ export async function POST(req: Request) {
         read: false,
         createdAt: serverTimestamp(),
       });
-    } catch (firebaseErr: any) {
+    } catch (firebaseErr: unknown) {
       console.error("Firebase Error:", firebaseErr);
       throw new Error("Veritabanına kaydedilirken bir hata oluştu.");
     }
@@ -157,10 +190,13 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("API Apply Error:", error);
     return NextResponse.json(
-      { error: error.message || "Bilinmeyen bir hata oluştu." },
+      {
+        error:
+          error instanceof Error ? error.message : "Bilinmeyen bir hata oluştu.",
+      },
       { status: 500 },
     );
   }
