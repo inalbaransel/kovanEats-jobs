@@ -57,38 +57,81 @@ export async function POST(request: Request) {
           <html>
             <head>
               <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <style>
-                body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #fafafa; margin: 0; padding: 0; }
-                .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 16px; overflow: hidden; }
-                .header { padding: 40px 20px; text-align: center; background-color: #ffffff; }
-                .content { padding: 40px; color: #171717; }
-                .badge { display: inline-block; padding: 6px 14px; border-radius: 30px; background-color: #f0f0f0; color: #666; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px; }
-                h1 { font-size: 24px; font-weight: 800; margin: 0 0 16px 0; color: #000; }
-                p { font-size: 15px; line-height: 1.7; color: #555; margin: 0 0 16px 0; }
-                .footer { padding: 24px; text-align: center; background-color: #f9f9f9; border-top: 1px solid #eaeaea; }
-                .footer-text { font-size: 12px; color: #999; margin: 0; }
+                body { 
+                  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+                  background-color: #f8fafc; 
+                  margin: 0; 
+                  padding: 0; 
+                  -webkit-font-smoothing: antialiased;
+                }
+                .wrapper {
+                  width: 100%;
+                  table-layout: fixed;
+                  background-color: #f8fafc;
+                  padding-bottom: 40px;
+                }
+                .container { 
+                  max-width: 600px; 
+                  margin: 40px auto; 
+                  background-color: #ffffff; 
+                  border-radius: 24px; 
+                  overflow: hidden; 
+                  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                }
+                .content { padding: 48px; color: #1e293b; }
+                .footer { padding: 32px; text-align: center; background-color: #f1f5f9; }
+                .badge { 
+                  display: inline-block; 
+                  padding: 8px 16px; 
+                  border-radius: 99px; 
+                  background-color: #f1f5f9; 
+                  color: #475569; 
+                  font-size: 11px; 
+                  font-weight: 700; 
+                  text-transform: uppercase; 
+                  letter-spacing: 0.05em; 
+                  margin-bottom: 24px; 
+                }
+                h1 { font-size: 28px; font-weight: 800; margin: 0 0 20px 0; color: #0f172a; letter-spacing: -0.02em; }
+                p { font-size: 16px; line-height: 1.6; color: #475569; margin: 0 0 24px 0; }
+                .highlight { font-weight: 600; color: #0f172a; }
+                .footer-text { font-size: 12px; color: #64748b; margin: 0; }
+                .signature-section {
+                  margin-top: 48px;
+                  padding-top: 32px;
+                  border-top: 1px solid #f1f5f9;
+                }
               </style>
             </head>
             <body>
-              <div class="container">
-                <div class="header">
-                  <div style="background-color: #ffffff; padding: 20px; display: block; margin: 0 auto; border-radius: 20px; width: fit-content; text-align: center;">
-                    <img src="https://jobs.kovaneats.com/kahverengi_kovanEats.png" alt="KovanEats" style="height: 180px; width: auto; display: block; margin: 0 auto;">
-                   </div>
-                </div>
-                <div class="content">
-                  <div class="badge">BAŞVURU GÜNCELLEME</div>
-                  <h1>Merhaba ${name},</h1>
-                  <p><strong>${jobTitle}</strong> pozisyonu için yaptığın başvuruyu değerlendirdik.</p>
-                  <p>Maalesef şu an bu pozisyon için ilerleyemeyeceğiz. Bu karar birçok nitelikli başvuru arasında zor bir seçimin sonucudur ve senin potansiyelini yansıtmamaktadır.</p>
-                  <p>Harcadığın zaman ve gösterdiğin ilgi için içtenlikle teşekkür ederiz. Gelecekte tekrar yollarımızın kesişmesini umuyoruz.</p>
-                  <p>Başarılar diliyoruz! 🍀</p>
-                  <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #eee;">
-                    <p style="font-size: 14px; color: #888;"><strong>KovanEats İşe Alım Ekibi</strong></p>
+              <div class="wrapper">
+                <div class="container">
+                  <div class="content">
+                    <div class="badge">Başvuru Güncellemesi</div>
+                    <h1>Merhaba ${name},</h1>
+                    <p><span class="highlight">${jobTitle}</span> pozisyonu için yaptığın başvuruyu titizlikle inceledik.</p>
+                    <p>Şu aşamada seninle devam edemeyeceğimizi bildirmekten üzüntü duyuyoruz. Ancak yeteneklerin ve tecrüben gerçekten etkileyici; profilini gelecekteki fırsatlar için veri tabanımızda saklayacağız.</p>
+                    <p>KovanEats'e gösterdiğin ilgi için tekrar teşekkürler, kariyer yolculuğunda başarılar dileriz. 🍀</p>
+                    
+                    <div class="signature-section">
+                      <p style="font-size: 14px; color: #64748b; margin-bottom: 32px;"><strong>KovanEats İşe Alım Ekibi</strong></p>
+                      
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td align="center">
+                            <div style="background-color: #ffffff; padding: 16px; display: inline-block; border-radius: 20px; border: 1px solid #f1f5f9;">
+                              <img src="https://jobs.kovaneats.com/kahverengi_kovanEats.png" alt="KovanEats" height="120" style="height: 120px; width: auto; display: block;">
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
                   </div>
-                </div>
-                <div class="footer">
-                  <p class="footer-text">© 2026 KovanEats · Developed by Baransel</p>
+                  <div class="footer">
+                    <p class="footer-text">© 2026 KovanEats · Developed by Baransel</p>
+                  </div>
                 </div>
               </div>
             </body>
