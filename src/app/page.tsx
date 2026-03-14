@@ -1,44 +1,8 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 import JobCard from "@/components/JobCard";
 import { jobs } from "@/lib/data";
-
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // GSAP Animations
-    const ctx = gsap.context(() => {
-      // Title and Subtitle Animation
-      gsap.fromTo(
-        ".hero-element",
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out" },
-      );
-
-      // Cards Animation
-      gsap.fromTo(
-        ".job-card-wrapper",
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "back.out(1.2)",
-          delay: 0.3,
-        },
-      );
-    }, containerRef);
-
-    return () => ctx.revert(); // Cleanup on unmount
-  }, []);
-
   return (
     <div
-      ref={containerRef}
       className="flex-1 flex flex-col items-center justify-center p-8 max-w-6xl mx-auto w-full min-h-[80vh]"
     >
       {/* Hero Section */}

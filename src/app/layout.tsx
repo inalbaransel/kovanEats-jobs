@@ -5,14 +5,31 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jobs.kovaneats.com"),
   title: "KovanEats Kariyer - Geleceğin Yemek Teknolojisini İnşa Et",
-  description: "KovanEats startup kariyer portalı. Sen de geleceği hayal edenlerden değil, onu kodlayanlardan olmak istiyorsan ekibimize ve Kovanımıza katıl!",
-  keywords: "KovanEats, kariyer, iş ilanları, startup, yazılım, frontend, backend, tasarım, pazarlama, iş başvuru",
+  description:
+    "KovanEats startup kariyer portalı. Sen de geleceği hayal edenlerden değil, onu kodlayanlardan olmak istiyorsan ekibimize ve Kovanımıza katıl!",
+  keywords:
+    "KovanEats, kariyer, iş ilanları, startup, yazılım, frontend, backend, tasarım, pazarlama, iş başvuru",
   openGraph: {
     title: "KovanEats Kariyer",
     description: "KovanEats startup kariyer portalı. Kovanımıza katıl!",
+    url: "https://jobs.kovaneats.com",
+    siteName: "KovanEats Kariyer",
+    images: [
+      {
+        url: "/icon.svg",
+        alt: "KovanEats Kariyer Logo",
+      },
+    ],
     type: "website",
     locale: "tr_TR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KovanEats Kariyer",
+    description: "KovanEats startup kariyer portalı. Kovanımıza katıl!",
+    images: ["/icon.svg"],
   },
 };
 

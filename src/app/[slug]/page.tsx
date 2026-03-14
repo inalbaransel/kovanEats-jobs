@@ -45,7 +45,7 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
               href={`/${job.slug}/apply`} 
               className="inline-flex items-center justify-center bg-neutral-900 text-white px-8 py-4 rounded-full font-bold hover:bg-black hover:scale-105 transition-all shadow-lg hover:shadow-xl"
             >
-              Hemen Başvur
+              Kovana Katıl
             </Link>
           </div>
         </div>
@@ -93,11 +93,11 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
              <ul className="space-y-4 text-sm text-neutral-600">
                <li className="flex justify-between border-b border-neutral-200 pb-3">
                  <span>Çalışma Şekli</span>
-                 <span className="font-medium text-neutral-900">Tam Zamanlı</span>
+                 <span className="font-medium text-neutral-900">Esnek & Sorumluluk Odaklı</span>
                </li>
                <li className="flex justify-between border-b border-neutral-200 pb-3">
                  <span>Konum</span>
-                 <span className="font-medium text-neutral-900">Hibrit / İstanbul</span>
+                 <span className="font-medium text-neutral-900">Hibrit / Freelance / İstanbul</span>
                </li>
                <li className="flex justify-between">
                  <span>Departman</span>

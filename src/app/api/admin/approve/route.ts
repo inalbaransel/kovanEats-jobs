@@ -73,10 +73,12 @@ export async function POST(request: Request) {
             <body>
               <div class="container">
                 <div class="header">
-                  <img src="https://jobs.kovaneats.com/kovanEats_logo.png" alt="KovanEats" style="height: 150px; width: auto;">
+                  <div style="background-color: #ffffff; padding: 20px; display: inline-block; border-radius: 20px;">
+                    <img src="https://jobs.kovaneats.com/kahverengi_kovanEats.png" alt="KovanEats" style="height: 150px; width: auto; display: block;">
+                  </div>
                 </div>
                 <div class="content">
-                  <div class="badge">✓ BAŞVURU ONAYLANDI</div>
+                  <div class="badge">✓ KOVANA GİRİŞ İZNİ VERİLDİ</div>
                   <h1>Tebrikler, ${name}! 🎉</h1>
                   <p><span class="highlight">${jobTitle}</span> pozisyonu için yaptığın başvuru <strong>onaylandı!</strong></p>
                   <p>Kovanımıza resmi olarak hoş geldin. Ekibimiz seninle iletişime geçmek için sabırsızlanıyor.</p>

@@ -40,8 +40,10 @@ export default function ApplicationForm({ job }: { job: Job }) {
       setSuccess(true);
       (e.target as HTMLFormElement).reset();
       setAnswers({});
-    } catch (err: any) {
-      setError(err.message || "Bilinmeyen bir hata oluştu.");
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error ? err.message : "Bilinmeyen bir hata oluştu.",
+      );
     } finally {
       setLoading(false);
     }
@@ -83,8 +85,8 @@ export default function ApplicationForm({ job }: { job: Job }) {
             Başvurunuz Kovanımıza Düştü!
           </h3>
           <p className="text-neutral-500 font-medium max-w-sm mx-auto leading-relaxed text-lg px-4">
-            Harika bir adım attın. Başvurun elimize ulaştı, ekibimiz heyecanla incelemeye başlıyor. 
-            Seninle en kısa sürede iletişime geçeceğiz.
+            Harika bir adım attın. Başvurun elimize ulaştı, ekibimiz heyecanla
+            incelemeye başlıyor. Seninle en kısa sürede iletişime geçeceğiz.
           </p>
 
           <div className="mt-12">
@@ -242,7 +244,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
               </svg>
-              Gönderiliyor...
+              Kovana Gönderiliyor...
             </span>
           ) : (
             "Başvurumu Tamamla"

@@ -86,7 +86,9 @@ export async function POST(req: Request) {
             <body>
               <div class="container">
                 <div class="header">
-                  <img src="https://jobs.kovaneats.com/kovanEats_logo.png" alt="KovanEats" style="height: 150px; width: auto;">
+                  <div style="background-color: #ffffff; padding: 20px; display: inline-block; border-radius: 20px;">
+                    <img src="https://jobs.kovaneats.com/kahverengi_kovanEats.png" alt="KovanEats" style="height: 150px; width: auto; display: block;">
+                  </div>
                 </div>
                 <div class="content">
                   <div class="badge">BAŞVURU ALINDI</div>

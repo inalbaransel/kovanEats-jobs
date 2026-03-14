@@ -10,7 +10,11 @@ export function generateStaticParams() {
   }));
 }
 
-export default async function JobApplyPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function JobApplyPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const job = getJobBySlug(slug);
 
@@ -25,13 +29,13 @@ export default async function JobApplyPage({ params }: { params: Promise<{ slug:
 
       <div className="max-w-3xl mx-auto px-6 w-full">
         {/* Top Navigation */}
-        <Link 
-           href={`/${job.slug}`} 
-           className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors mb-10"
+        <Link
+          href={`/${job.slug}`}
+          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors mb-10"
         >
           <ArrowLeft className="w-4 h-4" /> İlana Geri Dön ({job.title})
         </Link>
-        
+
         {/* Form Title area */}
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 rounded-full bg-white border border-neutral-200 text-xs font-bold tracking-wider text-neutral-600 mb-4 uppercase">
@@ -41,7 +45,8 @@ export default async function JobApplyPage({ params }: { params: Promise<{ slug:
             Bir Adım Kaldı
           </h2>
           <p className="text-neutral-500 font-medium max-w-xl mx-auto text-lg leading-relaxed">
-            Kovanımıza katılma şansını yakalamak için aşağıdaki formu doldur. Uzun ve çok soru olacak dedin, yerini ayırdık.
+            Kovanımıza katılma şansını yakalamak için aşağıdaki formu doldur.
+            Uzun ve çok soru olacak dedin, yerini ayırdık.
           </p>
         </div>
 
