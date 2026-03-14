@@ -47,16 +47,15 @@ export default function Home() {
         <h1 className="hero-element flex items-center justify-center gap-3 md:gap-6 text-5xl md:text-7xl font-extrabold tracking-tighter text-neutral-900 mb-4">
           <div className="flex items-center">
             <img
-              src="/kucukKovan_logo.png"
+              src="/kovanEats_logo.png"
               alt="Kovan Logo"
               className="w-[150px] h-[150px] md:w-[230px] md:h-[230px] object-contain relative -top-2 md:-top-3"
             />
-            <span className="-ml-0 md:ml-0">&apos;a</span>
           </div>
-          <span className="text-neutral-400">Katıl</span>
+          <span className="text-neutral-400">Kariyer</span>
         </h1>
         <p className="hero-element text-lg text-neutral-500 font-medium">
-          Geleceğin yemek teknolojilerini birlikte inşa edelim.
+          KovanEats'te kariyer fırsatlarını keşfet.
         </p>
       </div>
 

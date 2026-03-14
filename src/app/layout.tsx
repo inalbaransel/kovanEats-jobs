@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   },
 };
 
+import ConsoleSignature from "@/components/ConsoleSignature";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} min-h-screen flex flex-col antialiased text-neutral-900`}
       >
+        <ConsoleSignature />
         {/* Main Content */}
         <main className="flex-1 flex flex-col">{children}</main>
 
