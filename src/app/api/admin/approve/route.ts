@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { adminAuth } from "@/lib/firebase-admin";
 
