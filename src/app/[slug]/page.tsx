@@ -1,6 +1,7 @@
 import { getJobBySlug, jobs } from "@/lib/data";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return jobs.map((job) => ({
