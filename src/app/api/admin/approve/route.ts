@@ -2,7 +2,12 @@ import { NextResponse } from "next/server";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
-async function sendBrevoEmail(to: string, toName: string, subject: string, html: string) {
+async function sendBrevoEmail(
+  to: string,
+  toName: string,
+  subject: string,
+  html: string,
+) {
   const res = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -28,7 +33,10 @@ export async function POST(request: Request) {
     const { id, name, email, jobTitle } = await request.json();
 
     if (!id || !email) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 },
+      );
     }
 
     // 1. Update Firestore
@@ -65,7 +73,7 @@ export async function POST(request: Request) {
             <body>
               <div class="container">
                 <div class="header">
-                  <img src="https://pub-543c785b9b4940d6a934d856a8a91c99.r2.dev/kovanEats_logo.png" alt="KovanEats" style="height: 160px; width: auto;">
+                  <img src="https://jobs.kovaneats.com/kovanEats_logo.png" alt="KovanEats" style="height: 150px; width: auto;">
                 </div>
                 <div class="content">
                   <div class="badge">✓ BAŞVURU ONAYLANDI</div>
@@ -84,7 +92,7 @@ export async function POST(request: Request) {
               </div>
             </body>
           </html>
-          `
+          `,
         );
         emailSent = true;
       } catch (err: any) {
@@ -96,6 +104,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, emailSent, emailError });
   } catch (err) {
     console.error("Approve API Error:", err);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }

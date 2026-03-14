@@ -2,7 +2,12 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
-async function sendBrevoEmail(to: string, toName: string, subject: string, html: string) {
+async function sendBrevoEmail(
+  to: string,
+  toName: string,
+  subject: string,
+  html: string,
+) {
   const res = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -31,7 +36,7 @@ export async function POST(req: Request) {
     if (!name || !email) {
       return NextResponse.json(
         { error: "İsim ve E-posta zorunludur." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -81,7 +86,7 @@ export async function POST(req: Request) {
             <body>
               <div class="container">
                 <div class="header">
-                  <img src="https://pub-543c785b9b4940d6a934d856a8a91c99.r2.dev/kovanEats_logo.png" alt="KovanEats" style="height: 180px; width: auto;">
+                  <img src="https://jobs.kovaneats.com/kovanEats_logo.png" alt="KovanEats" style="height: 150px; width: auto;">
                 </div>
                 <div class="content">
                   <div class="badge">BAŞVURU ALINDI</div>
@@ -99,7 +104,7 @@ export async function POST(req: Request) {
               </div>
             </body>
           </html>
-          `
+          `,
         );
       } catch (mailErr) {
         console.error("Brevo Error:", mailErr);
@@ -111,7 +116,7 @@ export async function POST(req: Request) {
     console.error("API Apply Error:", error);
     return NextResponse.json(
       { error: error.message || "Bilinmeyen bir hata oluştu." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
