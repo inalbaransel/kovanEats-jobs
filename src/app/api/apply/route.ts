@@ -87,7 +87,7 @@ export async function POST(req: Request) {
               <div class="container">
                 <div class="header">
                   <div style="background-color: #ffffff; padding: 20px; display: inline-block; border-radius: 20px;">
-                    <img src="https://jobs.kovaneats.com/kahverengi_kovanEats.png" alt="KovanEats" style="height: 150px; width: auto; display: block;">
+                    <img src="https://jobs.kovaneats.com/kahverengi_kovanEats.png" alt="KovanEats" style="height: 155px; width: auto; display: block;">
                   </div>
                 </div>
                 <div class="content">
