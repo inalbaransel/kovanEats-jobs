@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
-import { doc, updateDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
-import { adminAuth } from "@/lib/firebase-admin";
+import { adminAuth, adminDb } from "@/lib/firebase-admin";
 
 async function sendBrevoEmail(
   to: string,
@@ -56,8 +54,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // 1. Update Firestore
-    await updateDoc(doc(db, "applications", id), { status: "approved" });
+    // 1. Update Firestore using Admin SDK (bypasses security rules)
+    if (!adminDb) {
+      throw new Error("Firebase Admin DB not initialized");
+    }
+    await adminDb.collection("applications").doc(id).update({ status: "approved" });
 
     // 2. Send approval email
     let emailSent = false;
