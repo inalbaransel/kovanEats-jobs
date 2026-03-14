@@ -1,6 +1,5 @@
-import { NextResponse } from "next/server";
-import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { adminAuth } from "@/lib/firebase-admin";
 
 async function sendBrevoEmail(
   to: string,
@@ -30,6 +29,19 @@ async function sendBrevoEmail(
 
 export async function POST(request: Request) {
   try {
+    const authHeader = request.headers.get("Authorization");
+    if (!authHeader?.startsWith("Bearer ")) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const token = authHeader.split("Bearer ")[1];
+    try {
+      await adminAuth.verifyIdToken(token);
+    } catch (err) {
+      console.error("Auth Error:", err);
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+    }
+
     const { id, name, email, jobTitle } = await request.json();
 
     if (!id || !email) {

@@ -1,8 +1,7 @@
 "use client";
 
 import { use, useEffect, useState } from "react";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { db, auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -54,9 +53,18 @@ export default function ApplicantDetailPage({ params }: { params: Promise<{ id: 
     setActionLoading(action);
     try {
       const endpoint = action === "approve" ? "/api/admin/approve" : "/api/admin/reject";
+      const token = await auth.currentUser?.getIdToken();
+      if (!token) {
+        showToast("error", "Oturum bilgisi alınamadı. Lütfen tekrar giriş yapın.");
+        return;
+      }
+
       const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({ id: app.id, name: app.name, email: app.email, jobTitle: app.jobTitle }),
       });
       const data = await res.json();
