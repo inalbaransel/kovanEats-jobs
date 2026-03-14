@@ -38,6 +38,9 @@ export async function POST(request: Request) {
 
     const token = authHeader.split("Bearer ")[1];
     try {
+      if (!adminAuth) {
+        throw new Error("Firebase Admin not initialized. Check your environment variables.");
+      }
       await adminAuth.verifyIdToken(token);
     } catch (err) {
       console.error("Auth Error:", err);
