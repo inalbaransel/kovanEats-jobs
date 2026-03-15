@@ -17,303 +17,303 @@ export type Job = {
 
 export const jobs: Job[] = [
   {
-    id: "1",
-    slug: "backend-security",
-    title: "Backend & Security Architect",
-    subtitle: "Sistemin beyni ve koruyucusu ol.",
+    id: "5",
+    slug: "brand-ambassador",
+    title: "Marka Elçisi ve Yaratıcı İçerik Lideri",
+    subtitle: "KovanEats markasını dijital dünyada en üst seviyede temsil edin.",
     description:
-      "Node.js, PostgreSQL ve Prisma’ya fısıldayan; sistemin güvenliğini (Auth, veri şifreleme) en üst seviyede tutacak, 'hacker' zihninde bir mimar arıyoruz.",
+      "Marka değerlerimizi dijital platformlarda temsil edecek, yaratıcı içerik stratejileri geliştirecek ve topluluk etkileşimini yönetecek vizyoner bir iletişimci arıyoruz.",
     responsibilities: [
-      "Ölçeklenebilir API mimarileri tasarlamak ve güvenliği sağlamak.",
-      "Veritabanı optimizasyonu ve veri şifreleme süreçlerini yönetmek.",
-      "Sistemi olası siber saldırılara karşı monitor etmek ve zırhlamak.",
+      "Kurumsal kimliğe uygun video ve dijital içerik stratejileri oluşturmak.",
+      "Sosyal medya platformlarında (Reels, TikTok) marka bilinirliğini artırmak.",
+      "KovanEats topluluğu ile profesyonel ve sürdürülebilir bir bağ kurmak.",
     ],
     expectations: [
-      "Node.js ve PostgreSQL tecrübesi.",
-      "Siber güvenlik protokollerine (JWT, OAuth, Encryption) hakimiyet.",
-      "Hızlı ve temiz kod yazımı.",
+      "Güçlü sunum becerisi ve etkili diksiyon.",
+      "Dijital medya trendlerine hakimiyet ve içerik üretim tecrübesi.",
+      "Kamera önünde profesyonel ve özgüvenli temsil yeteneği.",
     ],
     customQuestions: [
       {
-        id: "be_q1",
+        id: "bf_q1",
         label:
-          "Node.js ile hiç REST API geliştirdin mi? Hangi kütüphaneleri kullandın? (Express, NestJS vb.)",
-        placeholder: "Evet/Hayır. Express/NestJS kullandım...",
+          "Kurumsal iletişim ve içerik üretimi konusundaki yetkinliğinizi nasıl değerlendirirsiniz? (1-10)",
+        placeholder: "Tecrübelerinizden bahsedebilirsiniz...",
       },
       {
-        id: "be_q2",
-        label: "Daha önce hiç PostgreSQL ve Prisma ikilisiyle çalıştın mı?",
-        placeholder: "Evet/Hayır. Şu projede kullandım...",
+        id: "bf_q2",
+        label:
+          "Daha önce bir markayı temsil ettiğiniz veya içerik ürettiğiniz bir proje oldu mu?",
+        placeholder: "Proje detaylarını paylaşabilirsiniz...",
       },
       {
-        id: "be_q3",
-        label:
-          "Projelerini canlıya alırken hiç Hetzner, AWS veya Vercel gibi platformları kullandın mı?",
-        placeholder: "Evet, Vercel/Hetzner kullandım...",
+        id: "bf_q3",
+        label: "Dijital medya trendlerini takip etme ve uygulama yöntemleriniz nelerdir?",
+        placeholder: "Kullandığınız araçlar ve takip ettiğiniz mecralar...",
       },
       {
-        id: "be_q4",
+        id: "bf_q4",
         label:
-          "Docker veya basit sunucu yönetimi (Ubuntu/Nginx) hakkında bilgin var mı?",
-        placeholder: "Evet, Docker kullanabiliyorum...",
-      },
-    ],
-  },
-  {
-    id: "2",
-    slug: "frontend",
-    title: "Frontend Developer",
-    subtitle: "Temiz ve modern arayüzler tasarla.",
-    description:
-      "Next.js ve Tailwind CSS ile piksel mükemmeliyetinde işler çıkaran, GSAP ile animasyonun dibine vuran, estetik takıntılı bir büyücü arıyoruz.",
-    responsibilities: [
-      "Kullanıcıyı yormayan, 'premium' hissettiren arayüzler kodlamak.",
-      "GSAP ve Framer Motion ile akışkan animasyonlar oluşturmak.",
-      "Responsive tasarımı her cihazda kusursuz çalıştırmak.",
-    ],
-    expectations: [
-      "Next.js ve Tailwind CSS ustalığı.",
-      "GSAP kütüphanesine hakimiyet.",
-      "Göz yormayan estetik bakış açısı.",
-    ],
-    customQuestions: [
-      {
-        id: "fe_q1",
-        label:
-          "Hiç Figma/Adobe XD tasarımını birebir kodladığın bir projen oldu mu?",
-        placeholder: "Evet, pixel-perfect çalışma tecrübem var...",
-      },
-      {
-        id: "fe_q2",
-        label:
-          "Next.js ve Tailwind CSS ikilisine ne kadar hakimsin? (1-10 arası puanla)",
-        placeholder: "10 üzerinden 8 diyebilirim...",
-      },
-      {
-        id: "fe_q3",
-        label:
-          "Basit animasyonlar için hiç GSAP veya Framer Motion kullandın mı?",
-        placeholder: "Evet/Hayır. Framer Motion kullandım...",
-      },
-      {
-        id: "fe_q4",
-        label:
-          "Kullanıcının mobil ve web deneyimi arasındaki farklara ne kadar dikkat edersin?",
-        placeholder: "Responsive tasarıma çok önem veririm...",
+          "Temsil yeteneğinizi gösterdiğiniz bir sosyal medya hesabı veya portfolyo paylaşabilir misiniz?",
+        placeholder: "@kullaniciadi veya link...",
       },
     ],
   },
   {
     id: "3",
-    slug: "visual-designer",
-    title: "Görsel Tasarımcı & Art Director (2 Kişi)",
-    subtitle: "Kovan'ın dijital kimliğini sen tasarla.",
+    slug: "visual-identity-designer",
+    title: "Kurumsal Kimlik ve Marka Tasarımcısı",
+    subtitle: "Marka kimliğimizin görsel standartlarını ve tasarım dilini kurgulayın.",
     description:
-      "Markanın logosundan ikonlarına, uygulama içi renk paletinden tipografisine kadar her şeyi sıfırdan yaratacak 2 vizyoner tasarımcı arıyoruz.",
+      "Markamızın görsel standartlarını belirleyecek, kurumsal kimlik dokümantasyonunu oluşturacak ve tüm dijital kanallardaki tasarım dilini harmonize edecek yetkin tasarımcılar arıyoruz.",
     responsibilities: [
-      "Marka kimliğini ve kurumsal görsel dili oluşturmak.",
-      "Uygulama içi ikon ve illüstrasyon setleri hazırlamak.",
-      "Sosyal medya için yüksek kaliteli görsel içerikler üretmek.",
+      "Marka kimlik rehberini (Brand Book) oluşturmak ve güncel tutmak.",
+      "Uygulama içi görsel bileşenleri ve ikonografi setini tasarlamak.",
+      "Pazarlama faaliyetleri için yüksek standartlı görsel materyaller üretmek.",
     ],
     expectations: [
-      "Figma ve Adobe Illustrator/Photoshop ustalığı.",
-      "Minimalist ve modern tasarım çizgisi.",
-      "Güçlü bir portfolyo.",
+      "Figma, Adobe Illustrator ve Photoshop uygulamalarında ileri seviye yetkinlik.",
+      "Modern ve minimalist tasarım prensiplerine hakimiyet.",
+      "Sistematik tasarım (Design Systems) süreçlerine aşinalık.",
     ],
     customQuestions: [
       {
         id: "vd_q1",
         label:
-          "Tasarım süreçlerinde ağırlıklı olarak hangi araçları (Figma, Adobe vb.) kullanıyorsun?",
-        placeholder: "Genelde Figma ve Illustrator kullanıyorum...",
+          "Tasarım süreçlerinizde hangi araçları ve metodolojileri kullanıyorsunuz?",
+        placeholder: "İş akışınızdan bahsedebilirsiniz...",
       },
       {
         id: "vd_q2",
         label:
-          "Daha önce hiç sıfırdan bir marka logosu veya kurumsal kimlik tasarladın mı?",
-        placeholder: "Evet, birkaç marka için logo tasarımı yaptım...",
+          "Daha önce kurumsal kimlik veya marka konumlandırma çalışması yaptınız mı?",
+        placeholder: "Örnek çalışmalarınız...",
       },
       {
         id: "vd_q3",
         label:
-          "Sosyal medya içeriği tasarlarken trendleri nasıl takip edersin?",
-        placeholder: "Behance ve Pinterest üzerinden takip ediyorum...",
+          "Görsel trendleri profesyonel projelerinize nasıl entegre edersiniz?",
+        placeholder: "Yaklaşımınızı açıklayabilirsiniz...",
       },
       {
         id: "vd_q4",
         label:
-          "İnceleyebileceğimiz bir Behance/Dribbble linki bırakabilir misin?",
+          "Portfolyonuzu (Behance, Dribbble vb.) bizimle paylaşabilir misiniz?",
         placeholder: "https://behance.net/...",
       },
     ],
   },
   {
     id: "4",
-    slug: "video-motion",
-    title: "Video Designer",
-    subtitle: "Videolarımıza ruh ve hareket kat.",
+    slug: "video-motion-specialist",
+    title: "Video Prodüksiyon ve Hareketli Grafik Uzmanı",
+    subtitle: "Yaratıcı video prodüksiyonları ile marka hikayemizi dinamikleştirin.",
     description:
-      "After Effects'i piyano gibi çalan, videolarımıza o 'pro' geçişleri ekleyecek, kurgu ve animasyon dehası birini arıyoruz.",
+      "Tanıtım filmlerimizden sosyal medya içeriklerimize kadar tüm video süreçlerini yönetecek, profesyonel kurgu ve animasyon yeteneğine sahip bir uzman arıyoruz.",
     responsibilities: [
-      "Uygulama tanıtım videoları ve reklam filmleri kurgulamak.",
-      "2D/3D motion graphics çalışmaları üretmek.",
-      "Ham görüntüleri After Effects ile sanat eserine dönüştürmek.",
+      "Kurumsal tanıtım videoları ve reklam materyallerinin prodüksiyonunu yönetmek.",
+      "Motion Graphics çalışmaları ile statik içerikleri dinamikleştirmek.",
+      "Video ve ses post-prodüksiyon süreçlerini en üst kalitede tamamlamak.",
     ],
     expectations: [
-      "After Effects ve Premiere Pro'da ileri seviye.",
-      "Motion design trendlerine hakimiyet.",
-      "Hızlı kurgu yeteneği.",
+      "After Effects ve Premiere Pro programlarında profesyonel yetkinlik.",
+      "Hareketli grafik trendlerini iş süreçlerine uygulama becerisi.",
+      "Görsel hikaye anlatımı (Storytelling) konusunda deneyim.",
     ],
     customQuestions: [
       {
         id: "vm_q1",
         label:
-          "After Effects'te motion grafik yapma konusunda ne kadar tecrübelisin?",
-        placeholder: "2 yıldır After Effects ile çalışıyorum...",
+          "After Effects ve Motion Design alanındaki profesyonel deneyiminiz ne kadar?",
+        placeholder: "Yıllık tecrübeniz ve odaklandığınız alanlar...",
       },
       {
         id: "vm_q2",
         label:
-          "Daha çok kurgu mu (Premiere) yoksa animasyon mu (AE) tarafını seviyorsun?",
-        placeholder: "Animasyon tarafı daha ağır basıyor...",
+          "Kurgu (Premiere) ve animasyon (AE) dengesini projelerinizde nasıl kuruyorsunuz?",
+        placeholder: "Hangi alanda daha güçlü hissediyorsunuz?",
       },
       {
         id: "vm_q3",
         label:
-          "Bir videoya ses efekti (SFX) ekleme konusunda ne kadar dikkatlisin?",
-        placeholder: "Videonun ruhu sestir, çok dikkat ederim...",
+          "Ses tasarımı ve efekt (SFX) kullanımının video kalitesindeki önemi size göre nedir?",
+        placeholder: "Yaklaşımınızı paylaşın...",
       },
       {
         id: "vm_q4",
-        label: "En son hazırladığın bir işin (Showreel) veya portfolyo linkin?",
-        placeholder: "YouTube/Drive linki...",
-      },
-    ],
-  },
-  {
-    id: "5",
-    slug: "brand-face",
-    title: "Dijital İçerik Üreticisi (Reklam Yüzü)",
-    subtitle: "KovanEats'in enerjisi sen ol.",
-    description:
-      "Kamera karşısında kasmayan, TikTok ve Reels dilini ana dili gibi bilen, enerjisiyle uygulamayı binlerce kişiye indirecek o starı arıyoruz.",
-    responsibilities: [
-      "Günlük viral Reels ve TikTok içerikleri üretmek.",
-      "KovanEats topluluğu ile aktif etkileşim kurmak.",
-      "Markayı canlı yayınlarda ve etkinliklerde temsil etmek.",
-    ],
-    expectations: [
-      "Yüksek özgüven ve akıcı diksiyon.",
-      "Video kurgu (CapCut vb.) ve trend bilgisi.",
-      "Kamera önünde doğal ve enerjik olmak.",
-    ],
-    customQuestions: [
-      {
-        id: "bf_q1",
-        label:
-          "Kamera karşısında konuşma ve içerik üretme konusunda kendine ne kadar güveniyorsun? (1-10 arası)",
-        placeholder: "10 üzerinden 9 diyebilirim...",
-      },
-      {
-        id: "bf_q2",
-        label:
-          "Daha önce TikTok veya Reels için hiç içerik çektin mi? Kendi kurgunu yapabilir misin?",
-        placeholder: "Evet, CapCut ile kurgularımı yaparım...",
-      },
-      {
-        id: "bf_q3",
-        label: "Sosyal medyadaki güncel trendleri ne sıklıkla takip ediyorsun?",
-        placeholder: "Her gün düzenli takip ediyorum...",
-      },
-      {
-        id: "bf_q4",
-        label:
-          "Senin göründüğün örnek bir sosyal medya hesabın veya video linkin?",
-        placeholder: "@kullaniciadi",
+        label: "En son çalışmalarınızı içeren bir Showreel linki paylaşabilir misiniz?",
+        placeholder: "Video/Drive linki...",
       },
     ],
   },
   {
     id: "6",
-    slug: "growth-sales",
-    title: "İş Geliştirme ve Saha Temsilcisi (4 Kişi)",
-    subtitle: "Buzdolabını eskimoya satacak kadar iddialı mısın?",
+    slug: "strategic-partnership",
+    title: "Stratejik Ortaklıklar ve Saha Operasyon Uzmanı",
+    subtitle: "İş ortağı ağımızı genişleterek restoran ekosistemine yön verin.",
     description:
-      "Sahaya inecek, esnafı masaya oturtacak ve restoranları tek tek Kovan'a bağlayacak, ağzı iyi laf yapan 4 kaplan arıyoruz.",
+      "KovanEats'in büyüme stratejileri doğrultusunda restoran ve işletme ağımızı büyütecek, kurumsal temsil yeteneği yüksek saha uzmanları arıyoruz.",
     responsibilities: [
-      "Restoran ve esnaf ziyaretleri yaparak iş ortaklığı kurmak.",
-      "Müşteri bulma süreçlerini (Cold calling & Saha) yönetmek.",
-      "Satış hedeflerini tutturmak ve bölge analizi yapmak.",
+      "Potansiyel iş ortakları ile ticari görüşmeleri yönetmek ve anlaşmalar sağlamak.",
+      "Saha operasyonlarını koordine ederek bölge bazlı pazar analizi yapmak.",
+      "İş ortaklığı süreçlerinde müşteri memnuniyetini ve verimliliği takip etmek.",
     ],
     expectations: [
-      "Yüksek ikna kabiliyeti ve pes etmeyen yapı.",
-      "Diksiyonu düzgün ve temsil yeteneği olan.",
-      "Hedef odaklı çalışma disiplini.",
+      "Yüksek ikna kabiliyeti ve sonuç odaklı çalışma disiplini.",
+      "Temsil yeteneği güçlü ve profesyonel iletişim becerilerine sahip.",
+      "Dinamik çalışma ortamına uyum sağlayabilen.",
     ],
     customQuestions: [
       {
         id: "gs_q1",
-        label: "İnsanları ikna etme kabiliyetine 10 üzerinden kaç verirsin?",
-        placeholder: "10 üzerinden 9...",
+        label: "İletişim ve ikna becerilerinizi profesyonel bir örnekle açıklayabilir misiniz?",
+        placeholder: "Başarı hikayenizden bahsedin...",
       },
       {
         id: "gs_q2",
-        label: "Daha önce hiç satış, anket veya saha çalışması yaptın mı?",
-        placeholder: "Evet, daha önce anket çalışması yapmıştım...",
+        label: "Daha önce satış veya operasyonel bir süreçte görev aldınız mı?",
+        placeholder: "İş deneyimleriniz...",
       },
       {
         id: "gs_q3",
-        label: "Reddedildiğinde motivasyonunu nasıl korursun?",
-        placeholder: "Hemen bir sonrakine odaklanırım...",
+        label: "Zorlu pazarlık süreçlerinde motivasyonunuzu nasıl yönetirsiniz?",
+        placeholder: "Yaklaşımınız...",
       },
       {
         id: "gs_q4",
-        label: "Neden KovanEats ekibinde yer almak istiyorsun?",
-        placeholder: "Büyüyen bir startup'ın parçası olmak istiyorum...",
+        label: "KovanEats operasyonel süreçlerine nasıl bir değer katmayı hedefliyorsunuz?",
+        placeholder: "Hedefleriniz ve motivasyonunuz...",
       },
     ],
   },
   {
     id: "7",
-    slug: "marketing-strategist",
-    title: "Dijital Pazarlama & Meta Ads Uzmanı",
-    subtitle: "Algoritmaları Kovan için çalıştır.",
+    slug: "performance-marketing",
+    title: "Performans Pazarlama ve Büyüme Analisti",
+    subtitle: "Veriye dayalı stratejilerle pazarlama performansını optimize edin.",
     description:
-      "Meta (Instagram/Facebook) ve Google Ads'in algoritmasını çözmüş, kuruşu kuruşuna hedefleme yaparak bizi mahallenin en popüler uygulaması yapacak stratejist.",
+      "Dijital reklam kanallarını (Meta, Google) verimli kullanarak büyüme hedeflerimize katkı sağlayacak, veri analitiği odaklı bir pazarlama stratejisti arıyoruz.",
     responsibilities: [
-      "Reklam bütçesini yönetmek ve ROI/ROAS takibi yapmak.",
-      "A/B testleri ile reklam kreatiflerini optimize etmek.",
-      "Piksel kurulumu ve conversion tracking süreçlerini yönetmek.",
+      "Reklam bütçelerini yönetmek, ROI ve ROAS optimizasyonlarını gerçekleştirmek.",
+      "A/B testleri ve veri analizleri ile pazarlama performansını artırmak.",
+      "Dönüşüm hunisi (Conversion Funnel) takibi ve teknik entegrasyonları yönetmek.",
     ],
     expectations: [
-      "Meta Ads Manager ve Google Ads ustalığı.",
-      "Veri analitiği ve raporlama becerisi.",
-      "Daha önce yönetilmiş başarılı reklam bütçeleri.",
+      "Meta Ads Manager ve Google Ads platformlarında uzmanlık.",
+      "Veri analitiği araçlarını (Google Analytics vb.) kullanabilme becerisi.",
+      "Performans odaklı reklam kampanyaları yönetmiş olma tecrübesi.",
     ],
     customQuestions: [
       {
         id: "ms_q1",
         label:
-          "Daha önce Facebook/Instagram üzerinden hiç reklam yönetimi yaptın mı?",
-        placeholder: "Evet, Meta Ads Manager kullandım...",
+          "Meta Ads veya Google Ads kullanarak yönettiğiniz bütçeler ve ulaştığınız sonuçlar nelerdir?",
+        placeholder: "Metrikler üzerinden bilgi verebilirsiniz...",
       },
       {
         id: "ms_q2",
         label:
-          "Google Analytics veya piksel kurulumu gibi teknik terimlere ne kadar hakimsin?",
-        placeholder: "Evet, piksel kurabiliyorum...",
+          "Teknik entegrasyonlar (Pixel, API, GTM) konusundaki yetkinliğiniz nedir?",
+        placeholder: "Deneyimleriniz...",
       },
       {
         id: "ms_q3",
         label:
-          "Reklam bütçesini en verimli şekilde kullanmak senin için ne ifade ediyor?",
-        placeholder: "Düşük maliyetle yüksek dönüşüm odaklıyım...",
+          "Veriye dayalı karar alma süreçlerinde hangi araçları tercih edersiniz?",
+        placeholder: "Analiz yöntemleriniz...",
       },
       {
         id: "ms_q4",
         label:
-          "Hiç başarılı bir reklam kampanyanı veya sonucunu bizimle paylaşabilir misin?",
-        placeholder: "Evet, şu projede ROAS değerini 4 yaptım...",
+          "Başarıyla sonuçlandırdığınız bir büyüme stratejisinden bahsedebilir misiniz?",
+        placeholder: "Kampanya detayı...",
+      },
+    ],
+  },
+  {
+    id: "2",
+    slug: "frontend-engineer",
+    title: "Frontend ve Arayüz Geliştiricisi",
+    subtitle: "Modern teknolojilerle kullanıcı deneyimini kusursuz hale getirin.",
+    description:
+      "Next.js ve Tailwind CSS ekosisteminde, yüksek performanslı ve estetik arayüzler geliştirecek, animasyon ve etkileşim odaklı bir mühendis arıyoruz.",
+    responsibilities: [
+      "Görsel tasarımları yüksek hassasiyetle kodlamak ve optimize etmek.",
+      "GSAP ve Framer Motion kullanarak akıcı kullanıcı deneyimleri oluşturmak.",
+      "Modern web standartlarına uygun, responsive ve erişilebilir arayüzler geliştirmek.",
+    ],
+    expectations: [
+      "Next.js, TypeScript ve Tailwind CSS teknolojilerinde yetkinlik.",
+      "Modern animasyon kütüphanelerine (GSAP vb.) hakimiyet.",
+      "Estetik bakış açısı ve detay odaklı çalışma disiplini.",
+    ],
+    customQuestions: [
+      {
+        id: "fe_q1",
+        label:
+          "Tasarım çıktılarını (Figma vb.) koda dönüştürürken nelere dikkat edersiniz?",
+        placeholder: "İş akışınız ve hassasiyetleriniz...",
+      },
+      {
+        id: "fe_q2",
+        label:
+          "Next.js ve Tailwind CSS konusundaki teknik seviyenizi nasıl tanımlarsınız?",
+        placeholder: "Kullandığınız ileri seviye özellikler...",
+      },
+      {
+        id: "fe_q3",
+        label:
+          "Etkileşimli web siteleri için kullandığınız animasyon kütüphaneleri ve teknikleri nelerdir?",
+        placeholder: "GSAP, Framer Motion vb. deneyimleriniz...",
+      },
+      {
+        id: "fe_q4",
+        label:
+          "Web performansını ve kullanıcı deneyimini artırmak için izlediğiniz yöntemler?",
+        placeholder: "Optimizasyon yaklaşımlarınız...",
+      },
+    ],
+  },
+  {
+    id: "1",
+    slug: "backend-infrastructure",
+    title: "Backend ve Altyapı Mimarı",
+    subtitle: "Güçlü ve güvenli bir altyapı ile sistem mimarimizi kurgulayın.",
+    description:
+      "Sistem mimarimizi kurgulayacak, veri güvenliğini en üst düzeyde sağlayacak ve servislerimizin performanslı çalışmasından sorumlu olacak bir mimar arıyoruz.",
+    responsibilities: [
+      "Node.js tabanlı, ölçeklenebilir API mimarileri kurgulamak ve yönetmek.",
+      "Veritabanı tasarımı, optimizasyonu ve veri güvenliği süreçlerini yürütmek.",
+      "Sistem güvenliğini (Auth, Encryption) sağlamak ve olası tehditlere karşı önlem almak.",
+    ],
+    expectations: [
+      "Node.js, PostgreSQL ve Prisma teknolojilerinde profesyonel deneyim.",
+      "Güvenlik protokolleri (JWT, OAuth, Veri Şifreleme) konusunda derin bilgi.",
+      "Sistematik kodlama ve performans odaklı mimari anlayışı.",
+    ],
+    customQuestions: [
+      {
+        id: "be_q1",
+        label:
+          "Geliştirdiğiniz API projelerinde hangi mimari yapıları ve kütüphaneleri tercih ediyorsunuz?",
+        placeholder: "Express, NestJS vb. tecrübeniz...",
+      },
+      {
+        id: "be_q2",
+        label: "PostgreSQL ve Prisma ile gerçekleştirdiğiniz veri optimizasyonlarından bahseder misiniz?",
+        placeholder: "Karmaşık sorgu veya mimari çözümleriniz...",
+      },
+      {
+        id: "be_q3",
+        label:
+          "Bulut altyapı servisleri (AWS, Vercel, Hetzner) ve dağıtım süreçleri hakkındaki tecrübeniz?",
+        placeholder: "Canlıya alma süreçleriniz...",
+      },
+      {
+        id: "be_q4",
+        label:
+          "Container teknolojileri (Docker) veya sunucu yönetimi konusundaki yetkinliğiniz nedir?",
+        placeholder: "运维 (Ops) deneyimleriniz...",
       },
     ],
   },
