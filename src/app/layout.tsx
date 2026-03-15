@@ -34,6 +34,7 @@ export const metadata: Metadata = {
 };
 
 import ConsoleSignature from "@/components/ConsoleSignature";
+import Mascot from "@/components/Mascot";
 
 export default function RootLayout({
   children,
@@ -62,6 +63,7 @@ export default function RootLayout({
             />
           </div>
         </footer>
+        <Mascot />
       </body>
     </html>
   );

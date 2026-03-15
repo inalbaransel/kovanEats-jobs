@@ -17,10 +17,57 @@ export type Job = {
 
 export const jobs: Job[] = [
   {
+    id: "8",
+    slug: "mobile-developer",
+    title: "Mobil Ürün ve Yazılım Mühendisi",
+    subtitle:
+      "KovanEats'in mobil dünyadaki yüzünü inşa edin ve kullanıcı deneyimini mobilde kusursuzlaştırın.",
+    description:
+      "KovanEats'in iOS ve Android uygulamalarını React Native kullanarak geliştirecek, harita servisleri ve gerçek zamanlı takip gibi kritik özellikleri hayata geçirecek yetenekli bir mobil mühendis arıyoruz.",
+    responsibilities: [
+      "React Native kullanarak yüksek performanslı ve akıcı mobil uygulamalar geliştirmek.",
+      "Harita API'ları ve GPS servisleri ile sipariş takip sistemlerini entegre etmek.",
+      "Push Notification ve gerçek zamanlı veri senkronizasyonu süreçlerini yönetmek.",
+    ],
+    expectations: [
+      "React Native, TypeScript ve mobil ekosistem (XCode, Android Studio) konularında deneyim.",
+      "Mobil uygulama yaşam döngüsü ve performans optimizasyonu hakkında derin bilgi.",
+      "UI/UX prensiplerine sadık kalarak piksel hassasiyetinde uygulama geliştirme becerisi.",
+    ],
+    customQuestions: [
+      {
+        id: "mb_q1",
+        label:
+          "React Native ile geliştirdiğiniz en karmaşık uygulama ve karşılaştığınız en büyük zorluk neydi?",
+        placeholder: "Proje detayları ve teknik zorluklar...",
+      },
+      {
+        id: "mb_q2",
+        label:
+          "Harita entegrasyonu ve gerçek zamanlı lokasyon takibi konularındaki tecrübeniz nedir?",
+        placeholder: "Kullandığınız kütüphaneler ve yaklaşımlar...",
+      },
+      {
+        id: "mb_q3",
+        label:
+          "App Store ve Play Store yayınlama süreçlerindeki deneyiminizden bahseder misiniz?",
+        placeholder:
+          "Yayınlama süreci ve karşılaştığınız store politikaları...",
+      },
+      {
+        id: "mb_q4",
+        label:
+          "Performans optimizasyonu (Bridge bottleneck, JS thread lag vb.) için hangi teknikleri kullanıyorsunuz?",
+        placeholder: "Optimizasyon stratejileriniz...",
+      },
+    ],
+  },
+  {
     id: "5",
     slug: "brand-ambassador",
     title: "Marka Elçisi ve Yaratıcı İçerik Lideri",
-    subtitle: "KovanEats markasını dijital dünyada en üst seviyede temsil edin.",
+    subtitle:
+      "KovanEats markasını dijital dünyada en üst seviyede temsil edin.",
     description:
       "Marka değerlerimizi dijital platformlarda temsil edecek, yaratıcı içerik stratejileri geliştirecek ve topluluk etkileşimini yönetecek vizyoner bir iletişimci arıyoruz.",
     responsibilities: [
@@ -48,7 +95,8 @@ export const jobs: Job[] = [
       },
       {
         id: "bf_q3",
-        label: "Dijital medya trendlerini takip etme ve uygulama yöntemleriniz nelerdir?",
+        label:
+          "Dijital medya trendlerini takip etme ve uygulama yöntemleriniz nelerdir?",
         placeholder: "Kullandığınız araçlar ve takip ettiğiniz mecralar...",
       },
       {
@@ -63,7 +111,8 @@ export const jobs: Job[] = [
     id: "3",
     slug: "visual-identity-designer",
     title: "Kurumsal Kimlik ve Marka Tasarımcısı",
-    subtitle: "Marka kimliğimizin görsel standartlarını ve tasarım dilini kurgulayın.",
+    subtitle:
+      "Marka kimliğimizin görsel standartlarını ve tasarım dilini kurgulayın.",
     description:
       "Markamızın görsel standartlarını belirleyecek, kurumsal kimlik dokümantasyonunu oluşturacak ve tüm dijital kanallardaki tasarım dilini harmonize edecek yetkin tasarımcılar arıyoruz.",
     responsibilities: [
@@ -107,7 +156,8 @@ export const jobs: Job[] = [
     id: "4",
     slug: "video-motion-specialist",
     title: "Video Prodüksiyon ve Hareketli Grafik Uzmanı",
-    subtitle: "Yaratıcı video prodüksiyonları ile marka hikayemizi dinamikleştirin.",
+    subtitle:
+      "Yaratıcı video prodüksiyonları ile marka hikayemizi dinamikleştirin.",
     description:
       "Tanıtım filmlerimizden sosyal medya içeriklerimize kadar tüm video süreçlerini yönetecek, profesyonel kurgu ve animasyon yeteneğine sahip bir uzman arıyoruz.",
     responsibilities: [
@@ -141,7 +191,8 @@ export const jobs: Job[] = [
       },
       {
         id: "vm_q4",
-        label: "En son çalışmalarınızı içeren bir Showreel linki paylaşabilir misiniz?",
+        label:
+          "En son çalışmalarınızı içeren bir Showreel linki paylaşabilir misiniz?",
         placeholder: "Video/Drive linki...",
       },
     ],
@@ -166,7 +217,8 @@ export const jobs: Job[] = [
     customQuestions: [
       {
         id: "gs_q1",
-        label: "İletişim ve ikna becerilerinizi profesyonel bir örnekle açıklayabilir misiniz?",
+        label:
+          "İletişim ve ikna becerilerinizi profesyonel bir örnekle açıklayabilir misiniz?",
         placeholder: "Başarı hikayenizden bahsedin...",
       },
       {
@@ -176,12 +228,14 @@ export const jobs: Job[] = [
       },
       {
         id: "gs_q3",
-        label: "Zorlu pazarlık süreçlerinde motivasyonunuzu nasıl yönetirsiniz?",
+        label:
+          "Zorlu pazarlık süreçlerinde motivasyonunuzu nasıl yönetirsiniz?",
         placeholder: "Yaklaşımınız...",
       },
       {
         id: "gs_q4",
-        label: "KovanEats operasyonel süreçlerine nasıl bir değer katmayı hedefliyorsunuz?",
+        label:
+          "KovanEats operasyonel süreçlerine nasıl bir değer katmayı hedefliyorsunuz?",
         placeholder: "Hedefleriniz ve motivasyonunuz...",
       },
     ],
@@ -190,7 +244,8 @@ export const jobs: Job[] = [
     id: "7",
     slug: "performance-marketing",
     title: "Performans Pazarlama ve Büyüme Analisti",
-    subtitle: "Veriye dayalı stratejilerle pazarlama performansını optimize edin.",
+    subtitle:
+      "Veriye dayalı stratejilerle pazarlama performansını optimize edin.",
     description:
       "Dijital reklam kanallarını (Meta, Google) verimli kullanarak büyüme hedeflerimize katkı sağlayacak, veri analitiği odaklı bir pazarlama stratejisti arıyoruz.",
     responsibilities: [
@@ -234,7 +289,8 @@ export const jobs: Job[] = [
     id: "2",
     slug: "frontend-engineer",
     title: "Frontend ve Arayüz Geliştiricisi",
-    subtitle: "Modern teknolojilerle kullanıcı deneyimini kusursuz hale getirin.",
+    subtitle:
+      "Modern teknolojilerle kullanıcı deneyimini kusursuz hale getirin.",
     description:
       "Next.js ve Tailwind CSS ekosisteminde, yüksek performanslı ve estetik arayüzler geliştirecek, animasyon ve etkileşim odaklı bir mühendis arıyoruz.",
     responsibilities: [
@@ -300,7 +356,8 @@ export const jobs: Job[] = [
       },
       {
         id: "be_q2",
-        label: "PostgreSQL ve Prisma ile gerçekleştirdiğiniz veri optimizasyonlarından bahseder misiniz?",
+        label:
+          "PostgreSQL ve Prisma ile gerçekleştirdiğiniz veri optimizasyonlarından bahseder misiniz?",
         placeholder: "Karmaşık sorgu veya mimari çözümleriniz...",
       },
       {
