@@ -26,7 +26,7 @@ export const jobs: Job[] = [
       "KovanEats'in iOS ve Android uygulamalarını React Native kullanarak geliştirecek, harita servisleri ve gerçek zamanlı takip gibi kritik özellikleri hayata geçirecek yetenekli bir mobil mühendis arıyoruz.",
     responsibilities: [
       "React Native kullanarak yüksek performanslı ve akıcı mobil uygulamalar geliştirmek.",
-      "Harita API'ları ve GPS servisleri ile sipariş takip sistemlerini entegre etmek.",
+      "Harita API'ları ve GPS servisleri sisteme entegre etmek.",
       "Push Notification ve gerçek zamanlı veri senkronizasyonu süreçlerini yönetmek.",
     ],
     expectations: [
@@ -59,6 +59,12 @@ export const jobs: Job[] = [
         label:
           "Performans optimizasyonu (Bridge bottleneck, JS thread lag vb.) için hangi teknikleri kullanıyorsunuz?",
         placeholder: "Optimizasyon stratejileriniz...",
+      },
+      {
+        id: "mb_q5",
+        label:
+          "Geliştirme süreçlerinizde hangi işletim sistemini kullanıyorsunuz? (macOS, Windows, Linux vb.)",
+        placeholder: "macOS (M1/M2/M3), Windows vb...",
       },
     ],
   },
