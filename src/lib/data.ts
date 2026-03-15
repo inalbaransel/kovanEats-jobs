@@ -376,7 +376,7 @@ export const jobs: Job[] = [
         id: "be_q4",
         label:
           "Container teknolojileri (Docker) veya sunucu yönetimi konusundaki yetkinliğiniz nedir?",
-        placeholder: "运维 (Ops) deneyimleriniz...",
+        placeholder: "(Ops) deneyimleriniz...",
       },
     ],
   },
