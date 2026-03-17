@@ -72,8 +72,7 @@ export const jobs: Job[] = [
     id: "5",
     slug: "brand-ambassador",
     title: "Marka Elçisi ve Yaratıcı İçerik Lideri",
-    subtitle:
-      "KovanEats markasını dijital dünyada en üst seviyede temsil edin.",
+    subtitle: "KovanEats markasının dijital yüzü olun.",
     description:
       "Marka değerlerimizi dijital platformlarda temsil edecek, yaratıcı içerik stratejileri geliştirecek ve topluluk etkileşimini yönetecek vizyoner bir iletişimci arıyoruz.",
     responsibilities: [
@@ -207,7 +206,7 @@ export const jobs: Job[] = [
     id: "6",
     slug: "strategic-partnership",
     title: "Stratejik Ortaklıklar ve Saha Operasyon Uzmanı",
-    subtitle: "İş ortağı ağımızı genişleterek restoran ekosistemine yön verin.",
+    subtitle: "İş ortağı ağımızı genişleterek KovanEats'i büyütün.",
     description:
       "KovanEats'in büyüme stratejileri doğrultusunda restoran ve işletme ağımızı büyütecek, kurumsal temsil yeteneği yüksek saha uzmanları arıyoruz.",
     responsibilities: [
@@ -250,8 +249,7 @@ export const jobs: Job[] = [
     id: "7",
     slug: "performance-marketing",
     title: "Performans Pazarlama ve Büyüme Analisti",
-    subtitle:
-      "Veriye dayalı stratejilerle pazarlama performansını optimize edin.",
+    subtitle: "Stratejilerle pazarlama performansını optimize edin.",
     description:
       "Dijital reklam kanallarını (Meta, Google) verimli kullanarak büyüme hedeflerimize katkı sağlayacak, veri analitiği odaklı bir pazarlama stratejisti arıyoruz.",
     responsibilities: [
@@ -295,8 +293,7 @@ export const jobs: Job[] = [
     id: "2",
     slug: "frontend-engineer",
     title: "Frontend ve Arayüz Geliştiricisi",
-    subtitle:
-      "Modern teknolojilerle kullanıcı deneyimini kusursuz hale getirin.",
+    subtitle: "Webde KovanEats'i inşa edin.",
     description:
       "Next.js ve Tailwind CSS ekosisteminde, yüksek performanslı ve estetik arayüzler geliştirecek, animasyon ve etkileşim odaklı bir mühendis arıyoruz.",
     responsibilities: [

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Mascot: React.FC = () => {
@@ -8,6 +8,32 @@ const Mascot: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBlinking, setIsBlinking] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startCloseTimer = useCallback(() => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => {
+      if (!isExpanded) {
+        setShowBubble(false);
+      }
+    }, 5000);
+  }, [isExpanded]);
+
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showBubble && !isExpanded) {
+      startCloseTimer();
+    } else {
+      clearCloseTimer();
+    }
+    return () => clearCloseTimer();
+  }, [showBubble, isExpanded, startCloseTimer, clearCloseTimer]);
 
   useEffect(() => {
     // Show speech bubble after 3 seconds
@@ -137,13 +163,14 @@ const Mascot: React.FC = () => {
               exit={{ opacity: 0, scale: 0.8, y: 10, x: -20 }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               style={{ willChange: "transform, opacity" }}
-              className="absolute bottom-[105px] right-0 isolate"
+              className="absolute bottom-[105px] right-0 isolate origin-bottom-right"
             >
               <motion.div
                 layout
+                layoutRoot
                 className={`
                   bg-white text-neutral-800 shadow-[0_20px_50px_rgba(0,0,0,0.15)] 
-                  border border-white/20 relative h-auto antialiased
+                  border border-white/20 relative h-auto antialiased overflow-hidden
                   ${
                     isExpanded
                       ? "rounded-4xl w-[calc(100vw-48px)] sm:w-[420px]"
@@ -154,11 +181,13 @@ const Mascot: React.FC = () => {
                   backgroundColor: "rgba(255, 255, 255, 0.98)",
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
-                  transform: "translateZ(0)", // Force GPU acceleration
+                  transform: "translateZ(0)",
                   WebkitFontSmoothing: "antialiased",
-                  backfaceVisibility: "hidden",
                 }}
-                transition={{ type: "spring", stiffness: 250, damping: 25 }}
+                transition={{
+                  layout: { type: "spring", stiffness: 200, damping: 25 },
+                  opacity: { duration: 0.2 },
+                }}
               >
                 <div className="px-5 sm:px-6 py-4 sm:py-5 relative z-10">
                   <AnimatePresence mode="wait">
@@ -201,10 +230,19 @@ const Mascot: React.FC = () => {
                   </AnimatePresence>
                 </div>
                 {/* Bubble Tip - Thought Cloud Style */}
-                <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white/98 border-r border-b border-white/20 rotate-45 rounded-sm z-0"></div>
+                <motion.div
+                  layout
+                  className="absolute -bottom-2 right-4 w-4 h-4 bg-white/98 border-r border-b border-white/20 rotate-45 rounded-sm z-0"
+                ></motion.div>
                 {/* Extra Thought Dots for more vertical reach */}
-                <div className="absolute -bottom-6 right-5 w-2.5 h-2.5 bg-white/95 border border-white/20 rounded-full shadow-sm animate-pulse scale-90"></div>
-                <div className="absolute -bottom-10 right-6 w-1 h-1 bg-white/90 border border-white/20 rounded-full shadow-sm animate-pulse delay-75 scale-75"></div>
+                <motion.div
+                  layout
+                  className="absolute -bottom-6 right-5 w-2.5 h-2.5 bg-white/95 border border-white/20 rounded-full shadow-sm animate-pulse scale-90"
+                ></motion.div>
+                <motion.div
+                  layout
+                  className="absolute -bottom-10 right-6 w-1 h-1 bg-white/90 border border-white/20 rounded-full shadow-sm animate-pulse delay-75 scale-75"
+                ></motion.div>
               </motion.div>
             </motion.div>
           )}
