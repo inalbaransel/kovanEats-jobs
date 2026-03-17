@@ -2,9 +2,7 @@ import JobCard from "@/components/JobCard";
 import { jobs } from "@/lib/data";
 export default function Home() {
   return (
-    <div
-      className="flex-1 flex flex-col items-center justify-center p-8 max-w-6xl mx-auto w-full min-h-[80vh]"
-    >
+    <div className="flex-1 flex flex-col items-center justify-center p-8 max-w-6xl mx-auto w-full min-h-[80vh]">
       {/* Hero Section */}
       <div className="text-center mb-16 max-w-5xl flex flex-col items-center">
         <h1 className="hero-element flex flex-row items-center justify-center gap-3 md:gap-4 text-4xl md:text-8xl font-extrabold tracking-tighter text-neutral-900 mb-4">
@@ -12,7 +10,8 @@ export default function Home() {
             <img
               src="/kovanEats_logo.png"
               alt="Kovan Logo"
-              className="w-[130px] md:w-[350px] h-auto object-contain relative -top-1 md:-top-3"
+              className="w-[130px] md:w-[350px] h-auto object-contain relative -top-2 md:-top-7 select-none pointer-events-none"
+              draggable="false"
             />
           </div>
           <span className="text-neutral-400">Kariyer</span>

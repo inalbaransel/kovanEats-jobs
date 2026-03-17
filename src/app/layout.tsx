@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "KovanEats Kariyer",
     images: [
       {
-        url: "/icon.svg",
+        url: "/kovan_favicon.png",
         alt: "KovanEats Kariyer Logo",
       },
     ],
@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KovanEats Kariyer",
     description: "KovanEats startup kariyer portalı. Kovanımıza katıl!",
-    images: ["/icon.svg"],
+    images: ["/kovan_favicon.png"],
+  },
+  icons: {
+    icon: "/kovan_favicon.png",
   },
 };
 
