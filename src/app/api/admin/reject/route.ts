@@ -129,9 +129,10 @@ export async function POST(request: Request) {
                   <div class="content">
                     <div class="badge">Başvuru Güncellemesi</div>
                     <h1>Merhaba ${name},</h1>
-                    <p><span class="highlight">${jobTitle}</span> pozisyonu için yaptığın başvuruyu titizlikle inceledik.</p>
-                    <p>Şu aşamada seninle devam edemeyeceğimizi bildirmekten üzüntü duyuyoruz. Ancak yeteneklerin ve tecrüben gerçekten etkileyici; profilini gelecekteki fırsatlar için veri tabanımızda saklayacağız.</p>
-                    <p>KovanEats'e gösterdiğin ilgi için tekrar teşekkürler, kariyer yolculuğunda başarılar dileriz. 🍀</p>
+                    <p><span class="highlight">${jobTitle}</span> pozisyonuna gösterdiğin ilgi ve başvuruna ayırdığın zaman için çok teşekkür ederiz.</p>
+                    <p>Başvurunu ekibimizle birlikte büyük bir titizlikle inceledik. Öncelikle şunu söylemeliyiz ki; işe alım süreçlerimiz bazen sadece o anki ihtiyaca ve yüzlerce yetenekli aday arasındaki çok küçük nüanslara göre şekilleniyor. Bu sonucun senin gerçek potansiyelini ya da bugüne kadar başardığın harika işleri kesinlikle yansıtmadığını bilmeni isteriz.</p>
+                    <p>Şu aşamada seninle devam edemeyecek olsak da, kovanımız her zaman yetenekli isimlere açık. Kim bilir, belki de ileride yollarımız tekrar kesişir!</p>
+                    <p>KovanEats'e gösterdiğin ilgi bizim için çok değerli. Kariyer yolculuğunda her şeyin gönlünce olmasını dileriz, eminiz ki çok daha güzel başarılar seni bekliyor. 🍀</p>
                     
                     <div class="signature-section">
                       <p style="font-size: 14px; color: #64748b; margin-bottom: 32px;"><strong>KovanEats İşe Alım Ekibi</strong></p>

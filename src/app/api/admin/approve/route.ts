@@ -128,10 +128,19 @@ export async function POST(request: Request) {
                 <div class="container">
                   <div class="content">
                     <div class="badge">✓ Kovan Girişi Onaylandı</div>
-                    <h1>Hoş Geldin ${name}! 🎉</h1>
-                    <p>Harika haber! <span class="highlight">${jobTitle}</span> pozisyonu için yaptığın başvuru ekibimiz tarafından onaylandı.</p>
-                    <p>Artık kovanın bir parçası olmaya çok yakınsın. Ekipten bir arkadaşımız seninle detayları konuşmak için en kısa sürede iletişime geçecek.</p>
-                    <p>Aramıza katılmanı heyecanla bekliyoruz!</p>
+                    <h1>Artık Bizden Birisin! 🎉</h1>
+                    <p>Merhaba ${name}, harika bir haberimiz var!</p>
+                    <p><span class="highlight">${jobTitle}</span> pozisyonu için yaptığın başvuruyu ekibimizle birlikte büyük bir heyecanla onayladık. KovanEats ailesine, yani kovanımıza hoş geldin!</p>
+                    <p>Seninle birlikte başaracağımız çok şey var. Bu yolculukta ilk adım olarak, ekibimizin ve diğer çalışma arkadaşlarının bulunduğu WhatsApp topluluğumuza katılmanı bekliyoruz. Orada seni sıcak bir karşılama bekliyor olacak!</p>
+
+                    <div style="text-align: center; margin: 32px 0;">
+                      <a href="https://chat.whatsapp.com/KRzh4qGC4ed3mfIEwj7BKU" 
+                         style="background-color: #25D366; color: white; padding: 16px 32px; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
+                        WhatsApp Topluluğuna Katıl 🚀
+                      </a>
+                    </div>
+
+                    <p>Kısa süre içinde ekipten arkadaşlarımız oryantasyon ve diğer detaylar için seninle iletişime geçecek. Aramıza katılmanı dört gözle bekliyoruz!</p>
                     
                     <div class="signature-section">
                       <p style="font-size: 14px; color: #64748b; margin-bottom: 32px;"><strong>KovanEats İşe Alım Ekibi</strong></p>
