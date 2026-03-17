@@ -99,6 +99,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
           <p className="text-neutral-500 font-medium max-w-sm mx-auto leading-relaxed text-lg px-4">
             Harika bir adım attın. Başvurun elimize ulaştı, ekibimiz heyecanla
             incelemeye başlıyor. Seninle en kısa sürede iletişime geçeceğiz.
+            <span className="block mt-4 text-neutral-900 font-bold">Mail kutunu sık sık kontrol etmeyi unutma!</span>
           </p>
 
           <div className="mt-12">

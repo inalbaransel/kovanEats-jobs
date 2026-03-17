@@ -37,7 +37,9 @@ export async function POST(request: Request) {
     const token = authHeader.split("Bearer ")[1];
     try {
       if (!adminAuth) {
-        throw new Error("Firebase Admin not initialized. Check your environment variables.");
+        throw new Error(
+          "Firebase Admin not initialized. Check your environment variables.",
+        );
       }
       await adminAuth.verifyIdToken(token);
     } catch (err) {
@@ -58,7 +60,10 @@ export async function POST(request: Request) {
     if (!adminDb) {
       throw new Error("Firebase Admin DB not initialized");
     }
-    await adminDb.collection("applications").doc(id).update({ status: "approved" });
+    await adminDb
+      .collection("applications")
+      .doc(id)
+      .update({ status: "approved" });
 
     // 2. Send approval email
     let emailSent = false;
@@ -136,7 +141,7 @@ export async function POST(request: Request) {
                     <div style="text-align: center; margin: 32px 0;">
                       <a href="https://chat.whatsapp.com/KRzh4qGC4ed3mfIEwj7BKU" 
                          style="background-color: #25D366; color: white; padding: 16px 32px; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
-                        WhatsApp Topluluğuna Katıl 🚀
+                        WhatsApp Topluluğuna Katıl
                       </a>
                     </div>
 
