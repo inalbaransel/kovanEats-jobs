@@ -141,7 +141,7 @@ export async function POST(request: Request) {
                         <tr>
                           <td align="center">
                             <div style="background-color: #ffffff; padding: 16px; display: inline-block; border-radius: 20px; border: 1px solid #f1f5f9;">
-                              <img src="https://jobs.kovaneats.com/kahverengi_kovanEats.png" alt="KovanEats" height="120" style="height: 120px; width: auto; display: block;">
+                               <img src="https://pub-543c785b9b4940d6a934d856a8a91c99.r2.dev/kahverengi_kovanEats.png" alt="KovanEats" height="120" style="height: 120px; width: auto; display: block;">
                             </div>
                           </td>
                         </tr>
