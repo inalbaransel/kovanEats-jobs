@@ -181,7 +181,7 @@ export async function POST(req: Request) {
               <div class="wrapper">
                 <div class="container">
                   <div class="header">
-                    <img src="https://pub-543c785b9b4940d6a934d856a8a91c99.r2.dev/kahverengi_kovanEats.png" alt="KovanEats" class="logo">
+                    <img src="https://pub-543c785b9b4940d6a934d856a8a91c99.r2.dev/kovaneats-logo.png" alt="KovanEats" class="logo">
                   </div>
                   
                   <div class="content">
