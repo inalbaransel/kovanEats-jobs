@@ -97,7 +97,7 @@ export async function POST(req: Request) {
         await sendBrevoEmail(
           email,
           name,
-          "Başvurun kovanımıza ulaştı! 🐝",
+          "KovanEats: Başvurunuz Alındı",
           `
           <!DOCTYPE html>
           <html>
@@ -106,78 +106,101 @@ export async function POST(req: Request) {
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <style>
                 body { 
-                  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-                  background-color: #f8fafc; 
+                  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+                  background-color: #ffffff; 
                   margin: 0; 
                   padding: 0; 
                   -webkit-font-smoothing: antialiased;
+                  -moz-osx-font-smoothing: grayscale;
                 }
                 .wrapper {
                   width: 100%;
-                  table-layout: fixed;
-                  background-color: #f8fafc;
-                  padding-bottom: 40px;
+                  background-color: #ffffff;
                 }
                 .container { 
-                  max-width: 600px; 
-                  margin: 40px auto; 
+                  max-width: 560px; 
+                  margin: 0 auto; 
+                  padding: 64px 24px;
                   background-color: #ffffff; 
-                  border-radius: 24px; 
-                  overflow: hidden; 
-                  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
                 }
-                .content { padding: 48px; color: #1e293b; }
-                .footer { padding: 32px; text-align: center; background-color: #f1f5f9; }
-                .badge { 
-                  display: inline-block; 
-                  padding: 8px 16px; 
-                  border-radius: 99px; 
-                  background-color: #f1f5f9; 
-                  color: #475569; 
-                  font-size: 11px; 
-                  font-weight: 700; 
-                  text-transform: uppercase; 
-                  letter-spacing: 0.05em; 
-                  margin-bottom: 24px; 
+                .header {
+                  text-align: center;
+                  margin-bottom: 48px;
                 }
-                h1 { font-size: 28px; font-weight: 800; margin: 0 0 20px 0; color: #0f172a; letter-spacing: -0.02em; }
-                p { font-size: 16px; line-height: 1.6; color: #475569; margin: 0 0 24px 0; }
-                .highlight { font-weight: 600; color: #0f172a; }
-                .footer-text { font-size: 12px; color: #64748b; margin: 0; }
-                .signature-section {
-                  margin-top: 48px;
-                  padding-top: 32px;
-                  border-top: 1px solid #f1f5f9;
+                .logo {
+                  height: 64px;
+                  width: auto;
+                  margin: 0 auto;
+                }
+                .content { 
+                  color: #1d1d1f; 
+                  text-align: center;
+                }
+                h1 { 
+                  font-size: 32px; 
+                  line-height: 1.125;
+                  font-weight: 600; 
+                  margin: 0 0 24px 0; 
+                  color: #1d1d1f; 
+                  letter-spacing: -0.004em; 
+                }
+                p { 
+                  font-size: 17px; 
+                  line-height: 1.47059; 
+                  font-weight: 400;
+                  color: #1d1d1f; 
+                  margin: 0 0 24px 0; 
+                  letter-spacing: -0.022em;
+                }
+                .highlight { 
+                  font-weight: 600; 
+                }
+                .divider {
+                  height: 1px;
+                  background-color: #d2d2d7;
+                  margin: 48px 0;
+                  border: none;
+                }
+                .footer { 
+                  text-align: center; 
+                }
+                .footer-text { 
+                  font-size: 12px; 
+                  line-height: 1.33337;
+                  font-weight: 400;
+                  color: #86868b; 
+                  margin: 0; 
+                  letter-spacing: -0.01em;
+                }
+                .mt-2 {
+                  margin-top: 8px;
                 }
               </style>
             </head>
             <body>
               <div class="wrapper">
                 <div class="container">
+                  <div class="header">
+                    <img src="https://pub-543c785b9b4940d6a934d856a8a91c99.r2.dev/kahverengi_kovanEats.png" alt="KovanEats" class="logo">
+                  </div>
+                  
                   <div class="content">
-                    <div class="badge">Başvuru Alındı</div>
-                    <h1>Merhaba ${name},</h1>
-                    <p>KovanEats ekibi olarak <span class="highlight">${jobTitle}</span> pozisyonu için yaptığın başvuruyu büyük bir heyecanla aldık!</p>
-                    <p>Ekibimiz şu an başvurunu titizlikle inceliyor. Seninle tanışmak için sabırsızlanıyoruz.</p>
-                    <p>Kovanımızda görüşmek üzere!</p>
+                    <h1>Başvurunuz Alındı</h1>
                     
-                    <div class="signature-section">
-                      <p style="font-size: 14px; color: #64748b; margin-bottom: 32px;"><strong>KovanEats İşe Alım Ekibi</strong></p>
-                      
-                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                          <td align="center">
-                            <div style="background-color: #ffffff; padding: 16px; display: inline-block; border-radius: 20px; border: 1px solid #f1f5f9;">
-                               <img src="https://pub-543c785b9b4940d6a934d856a8a91c99.r2.dev/kahverengi_kovanEats.png" alt="KovanEats" height="120" style="height: 120px; width: auto; display: block;">
-                            </div>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
+                    <p>Merhaba ${name},</p>
+                    
+                    <p>KovanEats ekibi olarak <span class="highlight">${jobTitle}</span> pozisyonu için yaptığınız başvuruyu büyük bir heyecanla aldık.</p>
+                    
+                    <p>Ekibimiz şu an başvurunuzu titizlikle inceliyor. Sizinle tanışmak için sabırsızlanıyoruz.</p>
+                    
+                    <p>Kovanımızda görüşmek üzere.</p>
                   </div>
+
+                  <hr class="divider" />
+                  
                   <div class="footer">
-                    <p class="footer-text">© 2026 KovanEats · Developed by Baransel</p>
-                  </div>
+                    <p class="footer-text">KovanEats İşe Alım Ekibi</p>
+                    <p class="footer-text mt-2">© 2026 KovanEats. Developed by Baransel</p>
                 </div>
               </div>
             </body>
@@ -195,7 +218,9 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         error:
-          error instanceof Error ? error.message : "Bilinmeyen bir hata oluştu.",
+          error instanceof Error
+            ? error.message
+            : "Bilinmeyen bir hata oluştu.",
       },
       { status: 500 },
     );
