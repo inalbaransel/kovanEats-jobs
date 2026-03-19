@@ -1,9 +1,47 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import GlassSurface from "./GlassSurface";
 import { useLanguage } from "@/lib/i18n";
+
+type Choreography = {
+  animate: Record<string, number[]>;
+  transition: { duration: number; ease: string };
+};
+
+const choreographies: Choreography[] = [
+  // Yavaş yüzme — hafif x+y drift
+  {
+    animate: { y: [0, -12, -6, -16, -8, 0], x: [0, 4, -3, 5, -2, 0] },
+    transition: { duration: 5, ease: "easeInOut" },
+  },
+  // Meraklı eğilme — rotate + hafif sıçrama
+  {
+    animate: { y: [0, -8, -14, -6, 0], rotate: [0, -3, 2, -1, 0] },
+    transition: { duration: 4.5, ease: "easeInOut" },
+  },
+  // Tembel sallantı — çok yavaş x ağırlıklı
+  {
+    animate: { x: [0, 7, -5, 8, -4, 0], y: [0, -5, -3, -8, -4, 0] },
+    transition: { duration: 6, ease: "easeInOut" },
+  },
+  // Mutlu sekme — hızlı iki sıçrama
+  {
+    animate: { y: [0, -18, -4, -20, -6, 0], x: [0, 2, -2, 3, -1, 0] },
+    transition: { duration: 3.5, ease: "easeInOut" },
+  },
+  // Nefes alma — çok küçük scale + y
+  {
+    animate: { y: [0, -6, -3, -9, 0], scale: [1, 1.03, 1.01, 1.04, 1] },
+    transition: { duration: 5.5, ease: "easeInOut" },
+  },
+  // Spiral sürükleme — x,y,rotate bir arada
+  {
+    animate: { y: [0, -10, -15, -8, -12, 0], x: [0, 6, -4, 7, -3, 0], rotate: [0, 2, -2, 1, -1, 0] },
+    transition: { duration: 5, ease: "easeInOut" },
+  },
+];
 
 const Mascot: React.FC = () => {
   const [showBubble, setShowBubble] = useState(false);
@@ -12,6 +50,34 @@ const Mascot: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const { t } = useLanguage();
+  const bodyControls = useAnimationControls();
+  const isExpandedRef = useRef(isExpanded);
+  isExpandedRef.current = isExpanded;
+
+  // Sonsuz rastgele koreografi döngüsü
+  useEffect(() => {
+    let cancelled = false;
+
+    const runLoop = async () => {
+      while (!cancelled) {
+        if (isExpandedRef.current) {
+          await new Promise((r) => setTimeout(r, 300));
+          continue;
+        }
+        const pick = choreographies[Math.floor(Math.random() * choreographies.length)];
+        await bodyControls.start({
+          ...pick.animate,
+          transition: { ...pick.transition, repeat: 0 },
+        });
+        // Kısa bekleme sonraki koreografi öncesi
+        await new Promise((r) => setTimeout(r, 400 + Math.random() * 800));
+      }
+    };
+
+    runLoop();
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const startCloseTimer = useCallback(() => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
@@ -126,14 +192,7 @@ const Mascot: React.FC = () => {
       className="fixed bottom-8 right-8 z-50 pointer-events-none select-none"
     >
       <motion.div
-        animate={{
-          y: isExpanded ? 0 : [0, -15, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: isExpanded ? 0 : Infinity,
-          ease: "easeInOut",
-        }}
+        animate={bodyControls}
         style={{ willChange: "transform" }}
         className="relative flex flex-col items-end pointer-events-auto"
       >
