@@ -31,20 +31,20 @@ export default async function JobApplyPage({
         {/* Top Navigation */}
         <Link
           href={`/${job.slug}`}
-          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors mb-10"
+          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors mb-10"
         >
           <ArrowLeft className="w-4 h-4" /> İlana Geri Dön ({job.title})
         </Link>
 
         {/* Form Title area */}
         <div className="text-center mb-12">
-          <div className="inline-block px-3 py-1 rounded-full bg-white border border-neutral-200 text-xs font-bold tracking-wider text-neutral-600 mb-4 uppercase">
+          <div className="inline-block px-3 py-1 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold tracking-wider text-neutral-600 dark:text-neutral-300 mb-4 uppercase">
             Başvuru
           </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tighter text-neutral-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tighter text-neutral-900 dark:text-white mb-4">
             Bir Adım Kaldı
           </h2>
-          <p className="text-neutral-500 font-medium max-w-xl mx-auto text-lg leading-relaxed">
+          <p className="text-neutral-500 dark:text-neutral-400 font-medium max-w-xl mx-auto text-lg leading-relaxed">
             Kovanımıza katılma şansını yakalamak için aşağıdaki formu doldur.
             Uzun ve çok soru olacak dedin, yerini ayırdık.
           </p>

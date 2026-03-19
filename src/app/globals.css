@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (user can override system preference) */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-background: #fafafa;
   --color-foreground: #171717;
+}
+
+:root {
+  --color-background: #fafafa;
+  --color-foreground: #171717;
+}
+
+.dark {
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
 }
 
 /*
@@ -29,4 +42,28 @@
     color: var(--color-foreground);
     font-family: Arial, Helvetica, sans-serif;
   }
+}
+
+/* Mascot bubble dark mode (inline style override) */
+.mascot-bubble {
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+.dark .mascot-bubble {
+  background-color: rgba(18, 18, 18, 0.98);
+}
+
+.dark .mascot-tip {
+  background-color: rgba(18, 18, 18, 0.98);
+  border-color: rgba(64, 64, 64, 0.2);
+}
+
+.dark .mascot-dot-1 {
+  background-color: rgba(18, 18, 18, 0.95);
+  border-color: rgba(64, 64, 64, 0.2);
+}
+
+.dark .mascot-dot-2 {
+  background-color: rgba(18, 18, 18, 0.9);
+  border-color: rgba(64, 64, 64, 0.2);
 }

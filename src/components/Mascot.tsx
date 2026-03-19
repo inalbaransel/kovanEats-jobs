@@ -77,14 +77,14 @@ const Mascot: React.FC = () => {
   };
 
   const storyContent = (
-    <div className="flex flex-col gap-4 text-neutral-800 leading-relaxed">
-      <div className="flex items-center justify-between border-b border-neutral-100 pb-2 mb-1">
+    <div className="flex flex-col gap-4 text-neutral-800 dark:text-neutral-200 leading-relaxed">
+      <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-700 pb-2 mb-1">
         <span className="font-bold text-blue-600 tracking-tight text-base">
           Bir Startup Vizyonu: Birlikte Büyüyeceğiz
         </span>
         <button
           onClick={toggleExpand}
-          className="p-1 hover:bg-neutral-100 rounded-full transition-colors"
+          className="p-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-full transition-colors"
           title="Kapat"
         >
           <svg
@@ -121,7 +121,7 @@ const Mascot: React.FC = () => {
           başarımızı sadece kurucuların değil, bu kovanı bugün beraber örenlerin
           başarısı olarak göreceğiz.
         </p>
-        <p className="font-medium text-neutral-900 bg-blue-50/50 p-3 rounded-xl border border-blue-100/50">
+        <p className="font-medium text-neutral-900 dark:text-white bg-blue-50/50 dark:bg-blue-950/30 p-3 rounded-xl border border-blue-100/50 dark:border-blue-900/30">
           Senin de bizi tercih etmen için bu hikayeyi anlattık. Bu vizyonu
           beraber gerçeğe dönüştürmeye, kovanın bir parçası olmaya var mısın? 🤗
         </p>
@@ -169,8 +169,8 @@ const Mascot: React.FC = () => {
                 layout
                 layoutRoot
                 className={`
-                  bg-white text-neutral-800 shadow-[0_20px_50px_rgba(0,0,0,0.15)] 
-                  border border-white/20 relative h-auto antialiased overflow-hidden
+                  mascot-bubble text-neutral-800 dark:text-neutral-200 shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]
+                  border border-white/20 dark:border-neutral-700/30 relative h-auto antialiased overflow-hidden
                   ${
                     isExpanded
                       ? "rounded-4xl w-[calc(100vw-48px)] sm:w-[420px]"
@@ -178,7 +178,6 @@ const Mascot: React.FC = () => {
                   }
                 `}
                 style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.98)",
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
                   transform: "translateZ(0)",
@@ -203,7 +202,7 @@ const Mascot: React.FC = () => {
                         }}
                         className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 whitespace-nowrap"
                       >
-                        <span className="font-semibold text-neutral-900 text-sm sm:text-base leading-tight">
+                        <span className="font-semibold text-neutral-900 dark:text-white text-sm sm:text-base leading-tight">
                           Neden KovanEats&apos;i tercih etmelisin? 😑
                         </span>
                         <button
@@ -232,16 +231,16 @@ const Mascot: React.FC = () => {
                 {/* Bubble Tip - Thought Cloud Style */}
                 <motion.div
                   layout
-                  className="absolute -bottom-2 right-4 w-4 h-4 bg-white/98 border-r border-b border-white/20 rotate-45 rounded-sm z-0"
+                  className="mascot-tip absolute -bottom-2 right-4 w-4 h-4 bg-white/98 dark:bg-neutral-900/98 border-r border-b border-white/20 dark:border-neutral-700/20 rotate-45 rounded-sm z-0"
                 ></motion.div>
                 {/* Extra Thought Dots for more vertical reach */}
                 <motion.div
                   layout
-                  className="absolute -bottom-6 right-5 w-2.5 h-2.5 bg-white/95 border border-white/20 rounded-full shadow-sm animate-pulse scale-90"
+                  className="mascot-dot-1 absolute -bottom-6 right-5 w-2.5 h-2.5 bg-white/95 dark:bg-neutral-900/95 border border-white/20 dark:border-neutral-700/20 rounded-full shadow-sm animate-pulse scale-90"
                 ></motion.div>
                 <motion.div
                   layout
-                  className="absolute -bottom-10 right-6 w-1 h-1 bg-white/90 border border-white/20 rounded-full shadow-sm animate-pulse delay-75 scale-75"
+                  className="mascot-dot-2 absolute -bottom-10 right-6 w-1 h-1 bg-white/90 dark:bg-neutral-900/90 border border-white/20 dark:border-neutral-700/20 rounded-full shadow-sm animate-pulse delay-75 scale-75"
                 ></motion.div>
               </motion.div>
             </motion.div>

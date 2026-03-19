@@ -93,19 +93,19 @@ export default function ApplicationForm({ job }: { job: Job }) {
             </div>
           </div>
 
-          <h3 className="text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 mb-6 px-4">
+          <h3 className="text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-6 px-4">
             Başvurunuz Kovanımıza Düştü!
           </h3>
-          <p className="text-neutral-500 font-medium max-w-sm mx-auto leading-relaxed text-lg px-4">
+          <p className="text-neutral-500 dark:text-neutral-400 font-medium max-w-sm mx-auto leading-relaxed text-lg px-4">
             Harika bir adım attın. Başvurun elimize ulaştı, ekibimiz heyecanla
             incelemeye başlıyor. Seninle en kısa sürede iletişime geçeceğiz.
-            <span className="block mt-4 text-neutral-900 font-bold">Mail kutunu sık sık kontrol etmeyi unutma!</span>
+            <span className="block mt-4 text-neutral-900 dark:text-white font-bold">Mail kutunu sık sık kontrol etmeyi unutma!</span>
           </p>
 
           <div className="mt-12">
             <button
               onClick={() => (window.location.href = "/")}
-              className="px-8 py-4 bg-neutral-900 text-white rounded-full text-sm font-bold hover:bg-black hover:scale-105 transition-all shadow-lg active:scale-95 uppercase tracking-widest flex items-center gap-2"
+              className="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full text-sm font-bold hover:bg-black dark:hover:bg-neutral-200 hover:scale-105 transition-all shadow-lg active:scale-95 uppercase tracking-widest flex items-center gap-2"
             >
               ← Ana Sayfaya Dön
             </button>
@@ -124,15 +124,15 @@ export default function ApplicationForm({ job }: { job: Job }) {
   }
 
   return (
-    <div className="bg-white border text-left border-neutral-200 rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-neutral-50 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2" />
+    <div className="bg-white dark:bg-neutral-900 border text-left border-neutral-200 dark:border-neutral-700 rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-neutral-50 dark:bg-neutral-800 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2" />
 
-      <h3 className="text-2xl font-bold tracking-tight text-neutral-900 mb-8">
+      <h3 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-8">
         Başvuru Formu
       </h3>
 
       {error && (
-        <div className="bg-red-50 text-red-600 p-4 rounded-xl mb-6 text-sm border border-red-100 font-medium">
+        <div className="bg-red-50 dark:bg-red-950 text-red-600 p-4 rounded-xl mb-6 text-sm border border-red-100 dark:border-red-900 font-medium">
           {error}
         </div>
       )}
@@ -143,7 +143,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
           <div className="space-y-2">
             <label
               htmlFor="name"
-              className="block text-sm font-semibold text-neutral-700"
+              className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
             >
               Ad Soyad
             </label>
@@ -153,13 +153,13 @@ export default function ApplicationForm({ job }: { job: Job }) {
               name="name"
               required
               placeholder="Ahmet Yılmaz"
-              className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all bg-neutral-50 text-neutral-900 placeholder:text-neutral-400"
+              className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 focus:border-transparent transition-all bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
             />
           </div>
           <div className="space-y-2">
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-neutral-700"
+              className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
             >
               E-Posta
             </label>
@@ -169,7 +169,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
               name="email"
               required
               placeholder="ahmet@example.com"
-              className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all bg-neutral-50 text-neutral-900 placeholder:text-neutral-400"
+              className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 focus:border-transparent transition-all bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
             />
           </div>
         </div>
@@ -177,7 +177,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
         <div className="space-y-2">
           <label
             htmlFor="portfolio"
-            className="block text-sm font-semibold text-neutral-700"
+            className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
           >
             Portfolyo / LinkedIn / Web Sitesi
           </label>
@@ -187,7 +187,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
             name="portfolio"
             required
             placeholder="https://linkedin.com/in/ahmetyilmaz"
-            className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all bg-neutral-50 text-neutral-900 placeholder:text-neutral-400"
+            className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 focus:border-transparent transition-all bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
           />
         </div>
 
@@ -195,11 +195,11 @@ export default function ApplicationForm({ job }: { job: Job }) {
         {job.customQuestions.length > 0 && (
           <div className="pt-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-px flex-1 bg-neutral-100" />
+              <div className="h-px flex-1 bg-neutral-100 dark:bg-neutral-700" />
               <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
                 Pozisyona Özel Sorular
               </span>
-              <div className="h-px flex-1 bg-neutral-100" />
+              <div className="h-px flex-1 bg-neutral-100 dark:bg-neutral-700" />
             </div>
 
             <div className="space-y-6">
@@ -207,9 +207,9 @@ export default function ApplicationForm({ job }: { job: Job }) {
                 <div key={q.id} className="space-y-2">
                   <label
                     htmlFor={q.id}
-                    className="block text-sm font-semibold text-neutral-700"
+                    className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
                   >
-                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-neutral-900 text-white text-xs font-bold mr-2">
+                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-bold mr-2">
                       {index + 1}
                     </span>
                     {q.label}
@@ -222,7 +222,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
                     placeholder={q.placeholder}
                     value={answers[q.id] || ""}
                     onChange={(e) => handleAnswerChange(q.id, e.target.value)}
-                    className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent transition-all bg-neutral-50 text-neutral-900 placeholder:text-neutral-400 resize-y"
+                    className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 focus:border-transparent transition-all bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 resize-y"
                   />
                 </div>
               ))}

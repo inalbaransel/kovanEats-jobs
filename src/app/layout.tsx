@@ -38,6 +38,8 @@ export const metadata: Metadata = {
 
 import ConsoleSignature from "@/components/ConsoleSignature";
 import Mascot from "@/components/Mascot";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import FloatingMenu from "@/components/FloatingMenu";
 
 export default function RootLayout({
   children,
@@ -45,28 +47,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
+    <html lang="tr" suppressHydrationWarning>
+      <head>
+        {/* Anti-flash script: runs before render to apply correct theme class */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme')||'system';var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t==='system'&&d)){document.documentElement.classList.add('dark');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
-        className={`${inter.className} min-h-screen flex flex-col antialiased text-neutral-900`}
+        className={`${inter.className} min-h-screen flex flex-col antialiased text-neutral-900 dark:text-neutral-100`}
       >
-        <ConsoleSignature />
-        {/* Main Content */}
-        <main className="flex-1 flex flex-col">{children}</main>
+        <ThemeProvider>
+          <FloatingMenu />
+          <ConsoleSignature />
+          {/* Main Content */}
+          <main className="flex-1 flex flex-col">{children}</main>
 
-        {/* Footer */}
-        <footer className="w-full py-12 flex flex-col items-center justify-center gap-6">
-          <div className="flex flex-col items-center gap-3">
-            <span className="text-xs font-bold tracking-widest text-neutral-400 uppercase">
-              Powered By
-            </span>
-            <img
-              src="/kulüp_logo.png"
-              alt="Bilgisayar Kulübü"
-              className="h-16 w-auto object-contain hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100 grayscale-20 hover:grayscale-0"
-            />
-          </div>
-        </footer>
-        <Mascot />
+          {/* Footer */}
+          <footer className="w-full py-12 flex flex-col items-center justify-center gap-6">
+            <div className="flex flex-col items-center gap-3">
+              <span className="text-xs font-bold tracking-widest text-neutral-400 uppercase">
+                Powered By
+              </span>
+              <img
+                src="/kulüp_logo.png"
+                alt="Bilgisayar Kulübü"
+                className="h-16 w-auto object-contain hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100 grayscale-20 hover:grayscale-0"
+              />
+            </div>
+          </footer>
+          <Mascot />
+        </ThemeProvider>
       </body>
     </html>
   );
