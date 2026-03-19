@@ -40,6 +40,7 @@ import ConsoleSignature from "@/components/ConsoleSignature";
 import Mascot from "@/components/Mascot";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import FloatingMenu from "@/components/FloatingMenu";
+import { LanguageProvider } from "@/lib/i18n";
 
 export default function RootLayout({
   children,
@@ -59,6 +60,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} min-h-screen flex flex-col antialiased text-neutral-900 dark:text-neutral-100`}
       >
+        <LanguageProvider>
         <ThemeProvider>
           <FloatingMenu />
           <ConsoleSignature />
@@ -80,6 +82,7 @@ export default function RootLayout({
           </footer>
           <Mascot />
         </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -4,12 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Monitor, FileSearch, Globe } from "lucide-react";
 import { useTheme, Theme } from "./ThemeProvider";
-
-const themeOptions: { value: Theme; icon: React.FC<{ className?: string }>; label: string }[] = [
-  { value: "light", icon: Sun, label: "Açık" },
-  { value: "system", icon: Monitor, label: "Sistem" },
-  { value: "dark", icon: Moon, label: "Koyu" },
-];
+import { useLanguage } from "@/lib/i18n";
+import GlassSurface from "./GlassSurface";
 
 const menuVariants = {
   hidden: {
@@ -47,9 +43,15 @@ const itemVariants = {
 
 export default function FloatingMenu() {
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState<"TR" | "EN">("TR");
   const { theme, setTheme } = useTheme();
+  const { lang, setLang, t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const themeOptions: { value: Theme; icon: React.FC<{ className?: string }>; label: string }[] = [
+    { value: "light", icon: Sun, label: t.menu.themeLight },
+    { value: "system", icon: Monitor, label: t.menu.themeSystem },
+    { value: "dark", icon: Moon, label: t.menu.themeDark },
+  ];
 
   // Close on outside click
   useEffect(() => {
@@ -78,17 +80,27 @@ export default function FloatingMenu() {
         onClick={() => setOpen((v) => !v)}
         whileTap={{ scale: 0.9 }}
         whileHover={{ scale: 1.06 }}
-        aria-label="Menüyü aç"
-        className="
-          relative w-10 h-10 rounded-full flex items-center justify-center
-          bg-white/80 dark:bg-neutral-900/80
-          backdrop-blur-xl
-          border border-neutral-200/70 dark:border-neutral-700/70
-          shadow-lg shadow-black/5 dark:shadow-black/30
-          focus:outline-none
-          transition-colors duration-200
-        "
+        aria-label={t.menu.open}
+        className="relative focus:outline-none rounded-full"
       >
+        <GlassSurface
+          width={40}
+          height={40}
+          borderRadius={20}
+          borderWidth={0.07}
+          blur={16}
+          displace={0}
+          distortionScale={-60}
+          xChannel="R"
+          yChannel="B"
+          redOffset={0}
+          greenOffset={6}
+          blueOffset={12}
+          brightness={50}
+          opacity={1}
+          backgroundOpacity={0}
+          mixBlendMode="screen"
+        >
         {/* Hamburger ↔ X morph */}
         <div className="w-4 h-4 relative flex items-center justify-center">
           {/* Top line */}
@@ -110,6 +122,7 @@ export default function FloatingMenu() {
             className="absolute h-[1.5px] rounded-full bg-neutral-700 dark:bg-neutral-300 block"
           />
         </div>
+        </GlassSurface>
       </motion.button>
 
       {/* Dropdown Menu */}
@@ -136,7 +149,7 @@ export default function FloatingMenu() {
             {/* ── Tema ── */}
             <motion.div variants={itemVariants} className="px-3 pt-2 pb-1">
               <p className="text-[10px] font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase mb-2">
-                Tema
+                {t.menu.theme}
               </p>
               <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
                 {themeOptions.map((opt) => {
@@ -205,8 +218,8 @@ export default function FloatingMenu() {
                   <FileSearch className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <span className="text-sm font-semibold leading-tight">Başvurumu Takip Et</span>
-                  <span className="text-[10px] font-medium text-neutral-300 dark:text-neutral-600 leading-tight">Yakında geliyor</span>
+                  <span className="text-sm font-semibold leading-tight">{t.menu.trackApp}</span>
+                  <span className="text-[10px] font-medium text-neutral-300 dark:text-neutral-600 leading-tight">{t.menu.comingSoon}</span>
                 </div>
               </button>
             </motion.div>
@@ -220,7 +233,7 @@ export default function FloatingMenu() {
             {/* ── Dil ── */}
             <motion.div variants={itemVariants} className="px-3 pb-2 pt-1">
               <p className="text-[10px] font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase mb-2">
-                Dil
+                {t.menu.language}
               </p>
               <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
                 {(["TR", "EN"] as const).map((l) => {

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Job } from "@/lib/data";
+import { Job, getLocalizedJob } from "@/lib/data";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { useLanguage } from "@/lib/i18n";
 
 export default function ApplicationForm({ job }: { job: Job }) {
   const [loading, setLoading] = useState(false);
@@ -10,6 +11,9 @@ export default function ApplicationForm({ job }: { job: Job }) {
   const [error, setError] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const { lang, t } = useLanguage();
+
+  const localizedJob = getLocalizedJob(job, lang);
 
   const handleAnswerChange = (id: string, value: string) => {
     setAnswers((prev) => ({ ...prev, [id]: value }));
@@ -19,7 +23,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
     e.preventDefault();
 
     if (!turnstileToken) {
-      setError("Lütfen bot olmadığınızı doğrulayın.");
+      setError(t.form.verifyHuman);
       return;
     }
 
@@ -29,7 +33,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
     const formData = new FormData(e.currentTarget);
     const data = {
       jobSlug: job.slug,
-      jobTitle: job.title,
+      jobTitle: localizedJob.title,
       name: formData.get("name"),
       email: formData.get("email"),
       portfolio: formData.get("portfolio"),
@@ -46,7 +50,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
 
       if (!res.ok) {
         const errData = await res.json();
-        throw new Error(errData.error || "Özür dileriz, bir hata oluştu.");
+        throw new Error(errData.error || t.form.errorGeneric);
       }
 
       setSuccess(true);
@@ -54,7 +58,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
       setAnswers({});
     } catch (err: unknown) {
       setError(
-        err instanceof Error ? err.message : "Bilinmeyen bir hata oluştu.",
+        err instanceof Error ? err.message : t.form.errorUnknown,
       );
     } finally {
       setLoading(false);
@@ -94,12 +98,11 @@ export default function ApplicationForm({ job }: { job: Job }) {
           </div>
 
           <h3 className="text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-6 px-4">
-            Başvurunuz Kovanımıza Düştü!
+            {t.form.successTitle}
           </h3>
           <p className="text-neutral-500 dark:text-neutral-400 font-medium max-w-sm mx-auto leading-relaxed text-lg px-4">
-            Harika bir adım attın. Başvurun elimize ulaştı, ekibimiz heyecanla
-            incelemeye başlıyor. Seninle en kısa sürede iletişime geçeceğiz.
-            <span className="block mt-4 text-neutral-900 dark:text-white font-bold">Mail kutunu sık sık kontrol etmeyi unutma!</span>
+            {t.form.successText}
+            <span className="block mt-4 text-neutral-900 dark:text-white font-bold">{t.form.successNote}</span>
           </p>
 
           <div className="mt-12">
@@ -107,7 +110,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
               onClick={() => (window.location.href = "/")}
               className="px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-full text-sm font-bold hover:bg-black dark:hover:bg-neutral-200 hover:scale-105 transition-all shadow-lg active:scale-95 uppercase tracking-widest flex items-center gap-2"
             >
-              ← Ana Sayfaya Dön
+              {t.form.backToHome}
             </button>
           </div>
         </div>
@@ -128,7 +131,7 @@ export default function ApplicationForm({ job }: { job: Job }) {
       <div className="absolute top-0 right-0 w-64 h-64 bg-neutral-50 dark:bg-neutral-800 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2" />
 
       <h3 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-8">
-        Başvuru Formu
+        {t.form.title}
       </h3>
 
       {error && (
@@ -145,14 +148,14 @@ export default function ApplicationForm({ job }: { job: Job }) {
               htmlFor="name"
               className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
             >
-              Ad Soyad
+              {t.form.fullName}
             </label>
             <input
               type="text"
               id="name"
               name="name"
               required
-              placeholder="Ahmet Yılmaz"
+              placeholder={t.form.fullNamePlaceholder}
               className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 focus:border-transparent transition-all bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
             />
           </div>
@@ -161,14 +164,14 @@ export default function ApplicationForm({ job }: { job: Job }) {
               htmlFor="email"
               className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
             >
-              E-Posta
+              {t.form.email}
             </label>
             <input
               type="email"
               id="email"
               name="email"
               required
-              placeholder="ahmet@example.com"
+              placeholder={t.form.emailPlaceholder}
               className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 focus:border-transparent transition-all bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
             />
           </div>
@@ -179,31 +182,31 @@ export default function ApplicationForm({ job }: { job: Job }) {
             htmlFor="portfolio"
             className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300"
           >
-            Portfolyo / LinkedIn / Web Sitesi
+            {t.form.portfolio}
           </label>
           <input
             type="url"
             id="portfolio"
             name="portfolio"
             required
-            placeholder="https://linkedin.com/in/ahmetyilmaz"
+            placeholder={t.form.portfolioPlaceholder}
             className="w-full px-4 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-neutral-100 focus:border-transparent transition-all bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600"
           />
         </div>
 
         {/* Divider */}
-        {job.customQuestions.length > 0 && (
+        {localizedJob.customQuestions.length > 0 && (
           <div className="pt-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px flex-1 bg-neutral-100 dark:bg-neutral-700" />
               <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
-                Pozisyona Özel Sorular
+                {t.form.positionQuestions}
               </span>
               <div className="h-px flex-1 bg-neutral-100 dark:bg-neutral-700" />
             </div>
 
             <div className="space-y-6">
-              {job.customQuestions.map((q, index) => (
+              {localizedJob.customQuestions.map((q, index) => (
                 <div key={q.id} className="space-y-2">
                   <label
                     htmlFor={q.id}
@@ -266,10 +269,10 @@ export default function ApplicationForm({ job }: { job: Job }) {
                   d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                 ></path>
               </svg>
-              Kovana Gönderiliyor...
+              {t.form.sending}
             </span>
           ) : (
-            "Başvurumu Tamamla"
+            t.form.submit
           )}
         </button>
       </form>
