@@ -67,7 +67,7 @@ const Mascot: React.FC = () => {
         const pick = choreographies[Math.floor(Math.random() * choreographies.length)];
         await bodyControls.start({
           ...pick.animate,
-          transition: { ...pick.transition, repeat: 0 },
+          transition: { ...pick.transition, repeat: 0 } as any,
         });
         // Kısa bekleme sonraki koreografi öncesi
         await new Promise((r) => setTimeout(r, 400 + Math.random() * 800));

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Sun, Moon, Monitor, FileSearch, Globe } from "lucide-react";
 import { useTheme, Theme } from "./ThemeProvider";
 import { useLanguage } from "@/lib/i18n";
@@ -133,6 +133,8 @@ export default function FloatingMenu() {
             initial="hidden"
             animate="visible"
             exit="exit"
+            layout
+            layoutRoot
             style={{ originX: 1, originY: 0 }}
             className="
               absolute top-12 right-0
@@ -151,7 +153,8 @@ export default function FloatingMenu() {
               <p className="text-[10px] font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase mb-2">
                 {t.menu.theme}
               </p>
-              <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
+              <LayoutGroup id="menu-theme">
+                <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
                 {themeOptions.map((opt) => {
                   const isActive = theme === opt.value;
                   return (
@@ -194,9 +197,10 @@ export default function FloatingMenu() {
                   );
                 })}
               </div>
-            </motion.div>
+            </LayoutGroup>
+          </motion.div>
 
-            {/* ── Divider ── */}
+          {/* ── Divider ── */}
             <motion.div
               variants={itemVariants}
               className="h-px bg-neutral-100 dark:bg-neutral-800 mx-3 my-1"
@@ -235,7 +239,8 @@ export default function FloatingMenu() {
               <p className="text-[10px] font-bold tracking-widest text-neutral-400 dark:text-neutral-500 uppercase mb-2">
                 {t.menu.language}
               </p>
-              <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
+              <LayoutGroup id="menu-lang">
+                <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
                 {(["TR", "EN"] as const).map((l) => {
                   const isActive = lang === l;
                   return (
@@ -277,7 +282,8 @@ export default function FloatingMenu() {
                   );
                 })}
               </div>
-            </motion.div>
+            </LayoutGroup>
+          </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

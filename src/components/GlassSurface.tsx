@@ -86,6 +86,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const blueGradId = `blue-grad-${uniqueId}`;
 
   const [svgSupported, setSvgSupported] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const feImageRef = useRef<SVGFEImageElement>(null);
@@ -166,6 +167,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
 
   useEffect(() => {
     setSvgSupported(true);
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -220,7 +222,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       "--glass-saturation": saturation,
     } as React.CSSProperties;
 
-    const backdropFilterSupported = supportsBackdropFilter();
+    const backdropFilterSupported = mounted ? supportsBackdropFilter() : false;
 
     if (svgSupported) {
       return {
