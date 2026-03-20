@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   authors: [{ name: "inalbaransel" }],
   openGraph: {
     title: "KovanEats Kariyer Portalına Katıl",
-    description: "KovanEats startup kariyer portalı. Kovanımıza katıl ve geleceği birlikte kodlayalım!",
+    description: "KovanEats startup kariyer portalı. Kovanımıza katıl.",
     url: "https://jobs.kovaneats.com",
     siteName: "KovanEats Kariyer",
     images: [

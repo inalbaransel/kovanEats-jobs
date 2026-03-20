@@ -6,6 +6,7 @@ import { Sun, Moon, Monitor, FileSearch, Globe } from "lucide-react";
 import { useTheme, Theme } from "./ThemeProvider";
 import { useLanguage } from "@/lib/i18n";
 import GlassSurface from "./GlassSurface";
+import TrackingModal from "./TrackingModal";
 
 const menuVariants = {
   hidden: {
@@ -43,7 +44,9 @@ const itemVariants = {
 
 export default function FloatingMenu() {
   const [open, setOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const [trackingOpen, setTrackingOpen] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const { lang, setLang, t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -100,6 +103,7 @@ export default function FloatingMenu() {
           opacity={1}
           backgroundOpacity={0}
           mixBlendMode="screen"
+          isDark={isDark}
         >
         {/* Hamburger ↔ X morph */}
         <div className="w-4 h-4 relative flex items-center justify-center">
@@ -209,21 +213,22 @@ export default function FloatingMenu() {
             {/* ── Başvuru Takip ── */}
             <motion.div variants={itemVariants} className="px-2 py-1">
               <button
-                disabled
+                onClick={() => {
+                  setTrackingOpen(true);
+                  setOpen(false);
+                }}
                 className="
                   w-full flex items-center gap-3 px-3 py-2.5 rounded-xl
-                  text-neutral-400 dark:text-neutral-500
-                  hover:bg-neutral-50 dark:hover:bg-neutral-800
-                  transition-colors duration-150 group
-                  cursor-not-allowed
+                  hover:bg-white dark:hover:bg-neutral-800
+                  hover:shadow-sm dark:hover:shadow-none
+                  transition-all duration-200 group
                 "
               >
-                <div className="w-7 h-7 rounded-lg bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700 transition-colors">
+                <div className="w-7 h-7 rounded-lg bg-neutral-100 dark:bg-white/10 flex items-center justify-center group-hover:bg-white dark:group-hover:bg-white/20 group-hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.12)] dark:group-hover:shadow-none transition-all duration-200">
                   <FileSearch className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex flex-col items-start">
                   <span className="text-sm font-semibold leading-tight">{t.menu.trackApp}</span>
-                  <span className="text-[10px] font-medium text-neutral-300 dark:text-neutral-600 leading-tight">{t.menu.comingSoon}</span>
                 </div>
               </button>
             </motion.div>
@@ -287,6 +292,8 @@ export default function FloatingMenu() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <TrackingModal isOpen={trackingOpen} onClose={() => setTrackingOpen(false)} />
     </div>
   );
 }

@@ -16,6 +16,29 @@ export const translations = {
       comingSoon: "Yakında geliyor",
       language: "Dil",
     },
+    track: {
+      title: "Başvuru Takibi",
+      emailLabel: "E-Posta Adresiniz",
+      emailPlaceholder: "ornek@mail.com",
+      sendCode: "Doğrulama Kodu Gönder",
+      sendingCode: "Gönderiliyor...",
+      enterCode: "Doğrulama Kodunu Girin",
+      codePlaceholder: "000000",
+      verify: "Kodu Doğrula",
+      verifying: "Doğrulanıyor...",
+      back: "Geri",
+      noApps: "Bu e-posta adresiyle yapılmış bir başvuru bulunamadı.",
+      error: "Bir hata oluştu. Lütfen tekrar deneyin.",
+      invalidCode: "Geçersiz veya süresi dolmuş kod.",
+      success: "Başvurularınız aşağıda listelenmiştir.",
+      status: {
+        pending: "Beklemede",
+        review: "İncelemede",
+        rejected: "Olumsuz",
+        accepted: "Kabul Edildi",
+      },
+      date: "Başvuru Tarihi",
+    },
     home: {
       career: "Kariyer",
       tagline: "KovanEats'te kariyer fırsatlarını keşfet.",
@@ -87,6 +110,29 @@ export const translations = {
       comingSoon: "Coming soon",
       language: "Language",
     },
+    track: {
+      title: "Application Tracking",
+      emailLabel: "Your Email Address",
+      emailPlaceholder: "example@mail.com",
+      sendCode: "Send Verification Code",
+      sendingCode: "Sending...",
+      enterCode: "Enter Verification Code",
+      codePlaceholder: "000000",
+      verify: "Verify Code",
+      verifying: "Verifying...",
+      back: "Back",
+      noApps: "No applications found with this email address.",
+      error: "An error occurred. Please try again.",
+      invalidCode: "Invalid or expired code.",
+      success: "Your applications are listed below.",
+      status: {
+        pending: "Pending",
+        review: "In Review",
+        rejected: "Rejected",
+        accepted: "Accepted",
+      },
+      date: "Application Date",
+    },
     home: {
       career: "Careers",
       tagline: "Discover career opportunities at KovanEats.",
@@ -146,6 +192,7 @@ export const translations = {
         "We told you this story so you'd choose us. Are you in to turn this vision into reality together — to become part of the hive? 🤗",
       ],
     },
+
   },
 };
 
@@ -164,15 +211,19 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const stored = localStorage.getItem("lang") as Lang | null;
+    let target: Lang = "TR";
+
     if (stored === "TR" || stored === "EN") {
-      setLangState(stored);
+      target = stored;
     } else {
-      // Tarayıcı dilini tespit et, Türkçe değilse EN yap
       const browserLang = navigator.language || "";
-      const detected: Lang = browserLang.startsWith("tr") ? "TR" : "EN";
-      setLangState(detected);
+      target = browserLang.startsWith("tr") ? "TR" : "EN";
     }
-  }, []);
+
+    if (target !== lang) {
+      setLangState(target);
+    }
+  }, [lang]);
 
   const setLang = (newLang: Lang) => {
     setLangState(newLang);
