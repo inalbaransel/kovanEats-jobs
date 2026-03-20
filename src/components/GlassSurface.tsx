@@ -39,6 +39,7 @@ export interface GlassSurfaceProps {
     | "plus-lighter";
   className?: string;
   style?: React.CSSProperties;
+  isDark?: boolean;
 }
 
 const useDarkMode = () => {
@@ -79,6 +80,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   mixBlendMode = "difference",
   className = "",
   style = {},
+  isDark: isDarkProp,
 }) => {
   const uniqueId = useId().replace(/:/g, "-");
   const filterId = `glass-filter-${uniqueId}`;
@@ -95,7 +97,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const blueChannelRef = useRef<SVGFEDisplacementMapElement>(null);
   const gaussianBlurRef = useRef<SVGFEGaussianBlurElement>(null);
 
-  const isDarkMode = useDarkMode();
+  const systemIsDark = useDarkMode();
+  const isDarkMode = isDarkProp !== undefined ? isDarkProp : systemIsDark;
 
   const generateDisplacementMap = () => {
     const rect = containerRef.current?.getBoundingClientRect();
