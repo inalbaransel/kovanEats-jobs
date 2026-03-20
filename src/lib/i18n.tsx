@@ -84,7 +84,7 @@ export const translations = {
       successTitle: "Başvurunuz Kovanımıza Düştü!",
       successText:
         "Harika bir adım attın. Başvurun elimize ulaştı, ekibimiz heyecanla incelemeye başlıyor. Seninle en kısa sürede iletişime geçeceğiz.",
-      successNote: "Mail kutunu sık sık kontrol etmeyi unutma!",
+      successNote: "Başvuru durumunu sağ üstteki menüden takip edebilirsin!",
       backToHome: "← Ana Sayfaya Dön",
     },
     mascot: {
@@ -178,7 +178,7 @@ export const translations = {
       successTitle: "Your Application Reached Our Hive!",
       successText:
         "Great step forward. Your application is in our hands and our team is excitedly reviewing it. We'll be in touch with you as soon as possible.",
-      successNote: "Don't forget to check your inbox frequently!",
+      successNote: "You can track your application status from the top-right menu!",
       backToHome: "← Back to Home",
     },
     mascot: {
