@@ -13,7 +13,7 @@ Bu proje, bir startup için özel olarak geliştirilmiş bir işe alım portalı
 ### Önemli Geliştirmeler
 
 - **İşlemsel E-posta ve 2FA:** Başvuru yapan adayların süreçlerini takip edebilmesi için mail tabanlı bir doğrulama sistemi kurdum. OTP (Tek kullanımlık şifre) mantığıyla çalışan bu yapı sayesinde veri gizliliğini sağladım.
-- **Modern UI Geliştirme:** Apple'ın tasarım dilini referans alan "Liquid Glass" efektini uyguladım. CSS ve SVG filtreleri kullanarak cam yüzeylerde gerçekçi ışık kırılmaları ve derinlik hissi oluşturdum.
+- **Modern UI Geliştirme:** Modern tasarım trendi olan "Liquid Glass" efektini uyguladım. CSS ve SVG filtreleri kullanarak cam yüzeylerde gerçekçi ışık kırılmaları ve derinlik hissi oluşturdum.
 - **Performans:** Uygulamanın hızlı yüklenmesi ve akıcı animasyonlarla çalışması için var olan kütüphaneleri optimize ederek kullandım.
 
 ## Proje Vizyonu
