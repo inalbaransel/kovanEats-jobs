@@ -88,14 +88,14 @@ export const translations = {
       backToHome: "← Ana Sayfaya Dön",
     },
     mascot: {
-      question: "Neden KovanEats'i tercih etmelisin? 😑",
+      question: "Neden KovanEats'i tercih etmelisin? 🍀",
       readStory: "Hikayeyi Oku",
       storyTitle: "Bir Startup Vizyonu: Birlikte Büyüyeceğiz",
       storyParagraphs: [
         "Yemeksepeti'nin hikayesini bilirsin; ilk kurulduğunda ekipteki kimseye devasa maaşlar vaat edilememişti. Kurucusu o günleri anlatırken, tek vaatlerinin bir gün başarılı olurlarsa bu başarıyı herkesle paylaşmak olduğunu söyler.",
         "İşler büyüyüp milyonluk cirolar geldiğinde ise sözlerini tuttular. O büyük kazancı ekipteki herkesle, sanki her biri şirketin ortağıymış gibi paylaştılar. Çünkü gerçek bir startup ruhu, başarıyı tek başına değil, o yolu beraber yürüyenlerle kucaklamayı gerektirir.",
         "Biz de tam bu ruhla yola çıkıyoruz. Şu an bir startup'ız ve en büyük sermayemiz hayallerimiz. Yarın o büyük sıçramayı yaptığımızda, başarımızı sadece kurucuların değil, bu kovanı bugün beraber örenlerin başarısı olarak göreceğiz.",
-        "Senin de bizi tercih etmen için bu hikayeyi anlattık. Bu vizyonu beraber gerçeğe dönüştürmeye, kovanın bir parçası olmaya var mısın? 🤗",
+        "Senin de bizi tercih etmen için bu hikayeyi anlattık. Bu vizyonu beraber gerçeğe dönüştürmeye, kovanın bir parçası olmaya var mısın? 🫡",
       ],
     },
   },
@@ -178,21 +178,21 @@ export const translations = {
       successTitle: "Your Application Reached Our Hive!",
       successText:
         "Great step forward. Your application is in our hands and our team is excitedly reviewing it. We'll be in touch with you as soon as possible.",
-      successNote: "You can track your application status from the top-right menu!",
+      successNote:
+        "You can track your application status from the top-right menu!",
       backToHome: "← Back to Home",
     },
     mascot: {
-      question: "Why should you choose KovanEats? 😑",
+      question: "Why should you choose KovanEats? 🍀",
       readStory: "Read the Story",
       storyTitle: "A Startup Vision: We'll Grow Together",
       storyParagraphs: [
         "You know Yemeksepeti's story — when it was first founded, nobody on the team was promised huge salaries. The founder recalls those early days, saying their only promise was to share success with everyone if they ever made it big.",
         "When things grew and millions in revenue came in, they kept their word. They shared that great success with everyone on the team, as if each one were a co-owner of the company. Because a true startup spirit requires embracing success not alone, but with those who walked the path together.",
         "We set out with exactly this spirit. Right now we're a startup, and our biggest asset is our dreams. When we make that big leap tomorrow, we'll see our success not just as the founders', but as the success of everyone who built this hive together today.",
-        "We told you this story so you'd choose us. Are you in to turn this vision into reality together — to become part of the hive? 🤗",
+        "We told you this story so you'd choose us. Are you in to turn this vision into reality together — to become part of the hive? 🫡",
       ],
     },
-
   },
 };
 

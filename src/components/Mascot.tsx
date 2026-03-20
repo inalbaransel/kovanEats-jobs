@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import GlassSurface from "./GlassSurface";
 import { useLanguage } from "@/lib/i18n";
+import { useTheme } from "./ThemeProvider";
 
 type Choreography = {
   animate: Record<string, number[]>;
@@ -50,6 +51,8 @@ const Mascot: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const { t } = useLanguage();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const bodyControls = useAnimationControls();
   const isExpandedRef = useRef(isExpanded);
   isExpandedRef.current = isExpanded;
@@ -323,6 +326,7 @@ const Mascot: React.FC = () => {
             opacity={1}
             backgroundOpacity={0}
             mixBlendMode="screen"
+            isDark={isDark}
           >
             <svg
               viewBox="0 0 100 100"
