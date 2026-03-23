@@ -97,6 +97,16 @@ export const translations = {
         "Biz de tam bu ruhla yola çıkıyoruz. Şu an bir startup'ız ve en büyük sermayemiz hayallerimiz. Yarın o büyük sıçramayı yaptığımızda, başarımızı sadece kurucuların değil, bu kovanı bugün beraber örenlerin başarısı olarak göreceğiz.",
         "Senin de bizi tercih etmen için bu hikayeyi anlattık. Bu vizyonu beraber gerçeğe dönüştürmeye, kovanın bir parçası olmaya var mısın? 🫡",
       ],
+      jobReactions: {
+        "mobile-developer":         "aaa mobil ile mi uğraşıyorsun, sevdim seni~ 📱",
+        "backend-infrastructure":   "uff burası biraz zorlu bir alan, dikkatli ol 💨",
+        "frontend-engineer":        "ay sen benim alanıma giriyorsun ha ✨",
+        "video-motion-specialist":  "hareketli grafikler... bu iş sanata dönüşüyor 🎬",
+        "visual-identity-designer": "estetik ruh burada, hoş geldin 🎨",
+        "brand-ambassador":         "kameraya bak, seni keşfettim 😎",
+        "performance-marketing":    "rakamlarla konuşan biri geldi 📈",
+        "strategic-partnership":    "anlaşmalar yapılacak, ağlar kurulacak 🤝",
+      } as Record<string, string>,
     },
   },
   EN: {
@@ -192,6 +202,16 @@ export const translations = {
         "We set out with exactly this spirit. Right now we're a startup, and our biggest asset is our dreams. When we make that big leap tomorrow, we'll see our success not just as the founders', but as the success of everyone who built this hive together today.",
         "We told you this story so you'd choose us. Are you in to turn this vision into reality together — to become part of the hive? 🫡",
       ],
+      jobReactions: {
+        "mobile-developer":         "ooh mobile dev? already love you~ 📱",
+        "backend-infrastructure":   "oof this side is kinda tough, tread carefully 💨",
+        "frontend-engineer":        "hey you're stepping into my territory ✨",
+        "video-motion-specialist":  "motion graphics... this is literally art 🎬",
+        "visual-identity-designer": "an aesthetic soul has arrived 🎨",
+        "brand-ambassador":         "look at the camera, I found you 😎",
+        "performance-marketing":    "someone who speaks in numbers 📈",
+        "strategic-partnership":    "deals to be made, networks to be built 🤝",
+      } as Record<string, string>,
     },
   },
 };

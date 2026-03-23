@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
+import { usePathname } from "next/navigation";
 import GlassSurface from "./GlassSurface";
 import { useLanguage } from "@/lib/i18n";
 import { useTheme } from "./ThemeProvider";
@@ -44,12 +45,73 @@ const choreographies: Choreography[] = [
   },
 ];
 
+type ExpressionType =
+  | "neutral"
+  | "excited"
+  | "cute"
+  | "catmouth"
+  | "steam"
+  | "surprised"
+  | "happy"
+  | "wink"
+  | "smug"
+  | "starstruck"
+  | "business";
+
+type JobReaction = { expression: ExpressionType };
+
+const JOB_REACTIONS: Record<string, JobReaction> = {
+  "mobile-developer":         { expression: "cute" },
+  "backend-infrastructure":   { expression: "steam" },
+  "frontend-engineer":        { expression: "wink" },
+  "video-motion-specialist":  { expression: "starstruck" },
+  "visual-identity-designer": { expression: "catmouth" },
+  "brand-ambassador":         { expression: "smug" },
+  "performance-marketing":    { expression: "business" },
+  "strategic-partnership":    { expression: "surprised" },
+};
+
+function getMouthPath(expression: ExpressionType): string {
+  switch (expression) {
+    case "excited":    return "M 36 76 Q 50 88 64 76";
+    case "steam":      return "M 42 77 Q 50 80 58 77";
+    case "wink":       return "M 38 76 Q 50 84 62 76";
+    case "happy":      return "M 34 74 Q 50 86 66 74";
+    case "smug":       return "M 40 76 Q 46 73 58 76";
+    case "starstruck": return "M 36 75 Q 50 82 64 75";
+    case "catmouth":   return "M 40 76 Q 44 82 50 78 Q 56 82 60 76";
+    case "business":   return "M 38 77 L 62 77";
+    default:           return "M 38 77 L 62 77";
+  }
+}
+
+// Eye config per expression
+const EYE_CONFIG: Record<ExpressionType, { lRy: number; rRy: number; cy: number }> = {
+  neutral:    { lRy: 14, rRy: 14, cy: 45 },
+  cute:       { lRy: 16, rRy: 16, cy: 43 },
+  catmouth:   { lRy: 12, rRy: 12, cy: 46 },
+  excited:    { lRy: 16, rRy: 16, cy: 43 },
+  steam:      { lRy: 10, rRy: 10, cy: 46 },
+  wink:       { lRy: 14, rRy:  1, cy: 45 },
+  surprised:  { lRy: 16, rRy: 16, cy: 44 },
+  happy:      { lRy: 12, rRy: 12, cy: 46 },
+  smug:       { lRy: 14, rRy:  8, cy: 45 },
+  starstruck: { lRy: 16, rRy: 16, cy: 43 },
+  business:   { lRy: 11, rRy: 11, cy: 45 },
+};
+
 const Mascot: React.FC = () => {
   const [showBubble, setShowBubble] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBlinking, setIsBlinking] = useState(false);
+  const [activeExpression, setActiveExpression] = useState<ExpressionType>("neutral");
+  const [showReactionBubble, setShowReactionBubble] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const reactionTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const activeExpressionRef = useRef<ExpressionType>("neutral");
+  activeExpressionRef.current = activeExpression;
+
   const { t } = useLanguage();
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
@@ -57,13 +119,16 @@ const Mascot: React.FC = () => {
   const isExpandedRef = useRef(isExpanded);
   isExpandedRef.current = isExpanded;
 
-  // Sonsuz rastgele koreografi döngüsü
+  const pathname = usePathname();
+  const currentSlug = pathname.startsWith("/") ? pathname.slice(1) : "";
+
+  // Sonsuz rastgele koreografi döngüsü — expression aktifken duraklat
   useEffect(() => {
     let cancelled = false;
 
     const runLoop = async () => {
       while (!cancelled) {
-        if (isExpandedRef.current) {
+        if (isExpandedRef.current || activeExpressionRef.current !== "neutral") {
           await new Promise((r) => setTimeout(r, 300));
           continue;
         }
@@ -72,7 +137,6 @@ const Mascot: React.FC = () => {
           ...pick.animate,
           transition: { ...pick.transition, repeat: 0 } as any,
         });
-        // Kısa bekleme sonraki koreografi öncesi
         await new Promise((r) => setTimeout(r, 400 + Math.random() * 800));
       }
     };
@@ -81,6 +145,71 @@ const Mascot: React.FC = () => {
     return () => { cancelled = true; };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Rastgele göz kırpma + click outside (pathname bağımsız)
+  useEffect(() => {
+    const blinkInterval = setInterval(
+      () => {
+        setIsBlinking(true);
+        setTimeout(() => setIsBlinking(false), 150);
+      },
+      2000 + Math.random() * 2000,
+    );
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsExpanded(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      clearInterval(blinkInterval);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // "Neden tercih etmelisin?" balonunu sadece ana sayfada göster
+  useEffect(() => {
+    if (JOB_REACTIONS[currentSlug]) return;
+
+    const bubbleTimer = setTimeout(() => {
+      setShowBubble(true);
+    }, 3000);
+
+    return () => clearTimeout(bubbleTimer);
+  }, [currentSlug]);
+
+  // Pathname değişince job tepkisini tetikle
+  useEffect(() => {
+    if (reactionTimerRef.current) clearTimeout(reactionTimerRef.current);
+
+    const reaction = JOB_REACTIONS[currentSlug];
+    if (reaction) {
+      setShowBubble(false);
+      setIsExpanded(false);
+      setActiveExpression(reaction.expression);
+      reactionTimerRef.current = setTimeout(() => setShowReactionBubble(true), 600);
+    } else {
+      setActiveExpression("neutral");
+      setShowReactionBubble(false);
+    }
+
+    return () => {
+      if (reactionTimerRef.current) clearTimeout(reactionTimerRef.current);
+    };
+  }, [currentSlug]);
+
+  // Tepki balonunu 4.5 saniyede otomatik kapat
+  useEffect(() => {
+    if (!showReactionBubble) return;
+    const timer = setTimeout(() => setShowReactionBubble(false), 4500);
+    return () => clearTimeout(timer);
+  }, [showReactionBubble]);
 
   const startCloseTimer = useCallback(() => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
@@ -107,44 +236,12 @@ const Mascot: React.FC = () => {
     return () => clearCloseTimer();
   }, [showBubble, isExpanded, startCloseTimer, clearCloseTimer]);
 
-  useEffect(() => {
-    // Show speech bubble after 3 seconds
-    const bubbleTimer = setTimeout(() => {
-      setShowBubble(true);
-    }, 3000);
-
-    // Random blinking interval
-    const blinkInterval = setInterval(
-      () => {
-        setIsBlinking(true);
-        setTimeout(() => setIsBlinking(false), 150);
-      },
-      2000 + Math.random() * 2000,
-    );
-
-    // Click away to close logic
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
-        setIsExpanded(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      clearTimeout(bubbleTimer);
-      clearInterval(blinkInterval);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const toggleExpand = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsExpanded(!isExpanded);
   };
+
+  const eyeCfg = EYE_CONFIG[activeExpression];
 
   const storyContent = (
     <div className="flex flex-col gap-4 text-neutral-800 dark:text-neutral-200 leading-relaxed">
@@ -199,7 +296,7 @@ const Mascot: React.FC = () => {
         style={{ willChange: "transform" }}
         className="relative flex flex-col items-end pointer-events-auto"
       >
-        {/* Speech Bubble */}
+        {/* "Neden tercih etmelisin?" Speech Bubble */}
         <AnimatePresence>
           {showBubble && (
             <motion.div
@@ -304,10 +401,64 @@ const Mascot: React.FC = () => {
           )}
         </AnimatePresence>
 
+        {/* Job Reaction Bubble */}
+        <AnimatePresence>
+          {showReactionBubble && t.mascot.jobReactions[currentSlug] && (
+            <motion.div
+              key="reaction-bubble"
+              initial={{ opacity: 0, scale: 0.8, y: 10, x: -20 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                x:
+                  typeof window !== "undefined" && window.innerWidth < 640
+                    ? -5
+                    : -20,
+              }}
+              exit={{ opacity: 0, scale: 0.8, y: 10 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              style={{ willChange: "transform, opacity" }}
+              className="absolute bottom-[105px] right-0 isolate origin-bottom-right"
+            >
+              <div
+                className="mascot-bubble rounded-[24px] w-max max-w-[min(280px,calc(100vw-48px))]
+                           bg-white/60 dark:bg-[#1C1C1E]/60
+                           shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_32px_rgba(0,0,0,0.12)]
+                           dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.4)]
+                           border border-white/50 dark:border-white/10
+                           relative antialiased"
+                style={{
+                  backdropFilter: "blur(24px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(24px) saturate(180%)",
+                }}
+              >
+                <div className="px-4 py-3 relative z-10">
+                  <span className="font-semibold text-neutral-900 dark:text-white text-sm leading-tight">
+                    {t.mascot.jobReactions[currentSlug]}
+                  </span>
+                </div>
+                {/* Bubble Tip */}
+                <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white/60 dark:bg-[#1C1C1E]/60 backdrop-blur-xl border-r border-b border-white/50 dark:border-white/10 rotate-45 rounded-sm z-0 shadow-[4px_4px_16px_rgba(0,0,0,0.04)]" />
+                {/* Thought Dots */}
+                <div className="absolute -bottom-6 right-5 w-2.5 h-2.5 bg-white/60 dark:bg-[#1C1C1E]/60 backdrop-blur-md border border-white/50 dark:border-white/10 rounded-full shadow-sm animate-pulse scale-90" />
+                <div className="absolute -bottom-10 right-6 w-1 h-1 bg-white/60 dark:bg-[#1C1C1E]/60 backdrop-blur-sm border border-white/50 dark:border-white/10 rounded-full shadow-sm animate-pulse delay-75 scale-75" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+
         {/* Mascot Body */}
         <div
           className="cursor-pointer relative"
-          onClick={() => setShowBubble(!showBubble)}
+          onClick={() => {
+            if (JOB_REACTIONS[currentSlug]) {
+              setShowReactionBubble(!showReactionBubble);
+            } else {
+              setShowBubble(!showBubble);
+            }
+          }}
         >
           <GlassSurface
             width={76}
@@ -348,22 +499,80 @@ const Mascot: React.FC = () => {
                 {/* Left Eye */}
                 <motion.ellipse
                   cx="36"
-                  cy="45"
+                  cy={eyeCfg.cy}
                   rx="9"
-                  ry={isBlinking ? "1" : "14"}
+                  ry={isBlinking ? 1 : eyeCfg.lRy}
                   className="fill-neutral-900 dark:fill-white transition-colors duration-300"
-                  animate={{ ry: isBlinking ? 1 : 14 }}
-                  transition={{ duration: 0.1 }}
+                  animate={{ ry: isBlinking ? 1 : eyeCfg.lRy, cy: eyeCfg.cy }}
+                  transition={{ duration: 0.15 }}
                 />
                 {/* Right Eye */}
                 <motion.ellipse
                   cx="64"
-                  cy="45"
+                  cy={eyeCfg.cy}
                   rx="9"
-                  ry={isBlinking ? "1" : "14"}
+                  ry={isBlinking ? 1 : eyeCfg.rRy}
                   className="fill-neutral-900 dark:fill-white transition-colors duration-300"
-                  animate={{ ry: isBlinking ? 1 : 14 }}
-                  transition={{ duration: 0.1 }}
+                  animate={{ ry: isBlinking ? 1 : eyeCfg.rRy, cy: eyeCfg.cy }}
+                  transition={{ duration: 0.15 }}
+                />
+
+                {/* Mouth — stroke path (most expressions) */}
+                <motion.path
+                  d={getMouthPath(activeExpression)}
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  fill="none"
+                  className="text-neutral-900 dark:text-white"
+                  animate={{
+                    opacity: activeExpression !== "neutral" && activeExpression !== "surprised" && activeExpression !== "cute" && activeExpression !== "steam" ? 1 : 0,
+                    scaleY: activeExpression !== "neutral" && activeExpression !== "surprised" && activeExpression !== "cute" && activeExpression !== "steam" ? 1 : 0,
+                  }}
+                  style={{ transformOrigin: "50px 76px" }}
+                  transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 20 }}
+                />
+                {/* Mouth — big O for surprised */}
+                <motion.ellipse
+                  cx="50"
+                  cy="78"
+                  rx="5"
+                  ry="7"
+                  className="fill-neutral-900 dark:fill-white"
+                  animate={{
+                    opacity: activeExpression === "surprised" ? 1 : 0,
+                    scaleY: activeExpression === "surprised" ? 1 : 0,
+                  }}
+                  style={{ transformOrigin: "50px 78px" }}
+                  transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 20 }}
+                />
+                {/* Mouth — uff oval for steam (backend) */}
+                <motion.ellipse
+                  cx="50"
+                  cy="78"
+                  rx="6"
+                  ry="3"
+                  className="fill-neutral-900 dark:fill-white"
+                  animate={{
+                    opacity: activeExpression === "steam" ? 1 : 0,
+                    scale: activeExpression === "steam" ? 1 : 0,
+                  }}
+                  style={{ transformOrigin: "50px 78px" }}
+                  transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 20 }}
+                />
+                {/* Mouth — small round o for cute (mobile) */}
+                <motion.ellipse
+                  cx="50"
+                  cy="78"
+                  rx="4"
+                  ry="4"
+                  className="fill-neutral-900 dark:fill-white"
+                  animate={{
+                    opacity: activeExpression === "cute" ? 1 : 0,
+                    scale: activeExpression === "cute" ? 1 : 0,
+                  }}
+                  style={{ transformOrigin: "50px 78px" }}
+                  transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 20 }}
                 />
               </motion.g>
             </svg>
