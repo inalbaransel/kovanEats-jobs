@@ -56,7 +56,8 @@ type ExpressionType =
   | "wink"
   | "smug"
   | "starstruck"
-  | "business";
+  | "business"
+  | "lovestruck";
 
 type JobReaction = { expression: ExpressionType };
 
@@ -66,7 +67,7 @@ const JOB_REACTIONS: Record<string, JobReaction> = {
   "frontend-engineer":        { expression: "wink" },
   "video-motion-specialist":  { expression: "starstruck" },
   "visual-identity-designer": { expression: "catmouth" },
-  "brand-ambassador":         { expression: "smug" },
+  "brand-ambassador":         { expression: "lovestruck" },
   "performance-marketing":    { expression: "business" },
   "strategic-partnership":    { expression: "surprised" },
 };
@@ -80,6 +81,7 @@ function getMouthPath(expression: ExpressionType): string {
     case "smug":       return "M 40 76 Q 46 73 58 76";
     case "starstruck": return "M 36 75 Q 50 82 64 75";
     case "catmouth":   return "M 40 76 Q 44 82 50 78 Q 56 82 60 76";
+    case "lovestruck": return "M 31 74 Q 50 94 69 74";
     case "business":   return "M 38 77 L 62 77";
     default:           return "M 38 77 L 62 77";
   }
@@ -98,6 +100,7 @@ const EYE_CONFIG: Record<ExpressionType, { lRy: number; rRy: number; cy: number 
   smug:       { lRy: 14, rRy:  8, cy: 45 },
   starstruck: { lRy: 16, rRy: 16, cy: 43 },
   business:   { lRy: 11, rRy: 11, cy: 45 },
+  lovestruck: { lRy: 18, rRy: 18, cy: 41 },
 };
 
 const Mascot: React.FC = () => {
@@ -109,6 +112,7 @@ const Mascot: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const reactionTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const hasShownIntroRef = useRef(false);
   const activeExpressionRef = useRef<ExpressionType>("neutral");
   activeExpressionRef.current = activeExpression;
 
@@ -173,12 +177,14 @@ const Mascot: React.FC = () => {
     };
   }, []);
 
-  // "Neden tercih etmelisin?" balonunu sadece ana sayfada göster
+  // "Neden tercih etmelisin?" balonunu sadece ilk girişte bir kez göster
   useEffect(() => {
     if (JOB_REACTIONS[currentSlug]) return;
+    if (hasShownIntroRef.current) return;
 
     const bubbleTimer = setTimeout(() => {
       setShowBubble(true);
+      hasShownIntroRef.current = true;
     }, 3000);
 
     return () => clearTimeout(bubbleTimer);
@@ -204,10 +210,13 @@ const Mascot: React.FC = () => {
     };
   }, [currentSlug]);
 
-  // Tepki balonunu 4.5 saniyede otomatik kapat
+  // Tepki balonunu 4.5 saniyede otomatik kapat + yüz ifadesini neutral'a döndür
   useEffect(() => {
     if (!showReactionBubble) return;
-    const timer = setTimeout(() => setShowReactionBubble(false), 4500);
+    const timer = setTimeout(() => {
+      setShowReactionBubble(false);
+      setActiveExpression("neutral");
+    }, 4500);
     return () => clearTimeout(timer);
   }, [showReactionBubble]);
 
@@ -517,6 +526,46 @@ const Mascot: React.FC = () => {
                   transition={{ duration: 0.15 }}
                 />
 
+                {/* Lovestruck sparkle stars above/beside eyes */}
+                {activeExpression === "lovestruck" && (
+                  <>
+                    <motion.path
+                      d="M 24 28 L 24 34 M 21 31 L 27 31"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      style={{ transformOrigin: "24px 31px" }}
+                      animate={{ opacity: [0, 1, 0.7, 1, 0], scale: [0.4, 1.4, 1, 1.2, 0.4], rotate: [0, 25, 0, -15, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 0.4 }}
+                      className="text-neutral-900 dark:text-white"
+                    />
+                    <motion.path
+                      d="M 76 28 L 76 34 M 73 31 L 79 31"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      style={{ transformOrigin: "76px 31px" }}
+                      animate={{ opacity: [0, 1, 0.7, 1, 0], scale: [0.4, 1.4, 1, 1.2, 0.4], rotate: [0, -25, 0, 15, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 0.4, delay: 0.6 }}
+                      className="text-neutral-900 dark:text-white"
+                    />
+                    <motion.circle
+                      cx="17" cy="42" r="1.8"
+                      style={{ transformOrigin: "17px 42px" }}
+                      animate={{ opacity: [0, 1, 0], scale: [0, 1.3, 0] }}
+                      transition={{ duration: 1.1, repeat: Infinity, repeatDelay: 1.2, delay: 1 }}
+                      className="fill-neutral-900 dark:fill-white"
+                    />
+                    <motion.circle
+                      cx="83" cy="42" r="1.8"
+                      style={{ transformOrigin: "83px 42px" }}
+                      animate={{ opacity: [0, 1, 0], scale: [0, 1.3, 0] }}
+                      transition={{ duration: 1.1, repeat: Infinity, repeatDelay: 1.2, delay: 1.5 }}
+                      className="fill-neutral-900 dark:fill-white"
+                    />
+                  </>
+                )}
+
                 {/* Mouth — stroke path (most expressions) */}
                 <motion.path
                   d={getMouthPath(activeExpression)}
@@ -526,8 +575,8 @@ const Mascot: React.FC = () => {
                   fill="none"
                   className="text-neutral-900 dark:text-white"
                   animate={{
-                    opacity: activeExpression !== "neutral" && activeExpression !== "surprised" && activeExpression !== "cute" && activeExpression !== "steam" ? 1 : 0,
-                    scaleY: activeExpression !== "neutral" && activeExpression !== "surprised" && activeExpression !== "cute" && activeExpression !== "steam" ? 1 : 0,
+                    opacity: activeExpression !== "neutral" && activeExpression !== "surprised" && activeExpression !== "cute" && activeExpression !== "steam" && activeExpression !== "lovestruck" ? 1 : 0,
+                    scaleY: activeExpression !== "neutral" && activeExpression !== "surprised" && activeExpression !== "cute" && activeExpression !== "steam" && activeExpression !== "lovestruck" ? 1 : 0,
                   }}
                   style={{ transformOrigin: "50px 76px" }}
                   transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 20 }}
@@ -556,6 +605,20 @@ const Mascot: React.FC = () => {
                   animate={{
                     opacity: activeExpression === "steam" ? 1 : 0,
                     scale: activeExpression === "steam" ? 1 : 0,
+                  }}
+                  style={{ transformOrigin: "50px 78px" }}
+                  transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 20 }}
+                />
+                {/* Mouth — oo round for lovestruck (brand ambassador) */}
+                <motion.ellipse
+                  cx="50"
+                  cy="78"
+                  rx="5"
+                  ry="6"
+                  className="fill-neutral-900 dark:fill-white"
+                  animate={{
+                    opacity: activeExpression === "lovestruck" ? 1 : 0,
+                    scale: activeExpression === "lovestruck" ? 1 : 0,
                   }}
                   style={{ transformOrigin: "50px 78px" }}
                   transition={{ duration: 0.25, type: "spring", stiffness: 300, damping: 20 }}
