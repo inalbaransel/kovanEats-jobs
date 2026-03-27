@@ -7,6 +7,7 @@ import { useTheme, Theme } from "./ThemeProvider";
 import { useLanguage } from "@/lib/i18n";
 import GlassSurface from "./GlassSurface";
 import TrackingModal from "./TrackingModal";
+import { usePathname } from "next/navigation";
 
 const menuVariants = {
   hidden: {
@@ -43,6 +44,7 @@ const itemVariants = {
 };
 
 export default function FloatingMenu() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [trackingOpen, setTrackingOpen] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -75,6 +77,8 @@ export default function FloatingMenu() {
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, []);
+
+  if (pathname === "/maintenance") return null;
 
   return (
     <div ref={containerRef} className="fixed top-5 right-5 z-50">

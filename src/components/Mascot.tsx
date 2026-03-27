@@ -124,6 +124,7 @@ const Mascot: React.FC = () => {
   isExpandedRef.current = isExpanded;
 
   const pathname = usePathname();
+  const isMaintenance = pathname === "/maintenance";
   const currentSlug = pathname.startsWith("/") ? pathname.slice(1) : "";
 
   // Sonsuz rastgele koreografi döngüsü — expression aktifken duraklat
@@ -179,6 +180,7 @@ const Mascot: React.FC = () => {
 
   // "Neden tercih etmelisin?" balonunu sadece ilk girişte bir kez göster
   useEffect(() => {
+    if (isMaintenance) return;
     if (JOB_REACTIONS[currentSlug]) return;
     if (hasShownIntroRef.current) return;
 
@@ -188,7 +190,7 @@ const Mascot: React.FC = () => {
     }, 3000);
 
     return () => clearTimeout(bubbleTimer);
-  }, [currentSlug]);
+  }, [currentSlug, isMaintenance]);
 
   // Pathname değişince job tepkisini tetikle
   useEffect(() => {
@@ -307,7 +309,7 @@ const Mascot: React.FC = () => {
       >
         {/* "Neden tercih etmelisin?" Speech Bubble */}
         <AnimatePresence>
-          {showBubble && (
+          {showBubble && !isMaintenance && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 10, x: -20 }}
               animate={{
@@ -412,7 +414,7 @@ const Mascot: React.FC = () => {
 
         {/* Job Reaction Bubble */}
         <AnimatePresence>
-          {showReactionBubble && t.mascot.jobReactions[currentSlug] && (
+          {showReactionBubble && !isMaintenance && t.mascot.jobReactions[currentSlug] && (
             <motion.div
               key="reaction-bubble"
               initial={{ opacity: 0, scale: 0.8, y: 10, x: -20 }}
@@ -460,8 +462,8 @@ const Mascot: React.FC = () => {
 
         {/* Mascot Body */}
         <div
-          className="cursor-pointer relative"
-          onClick={() => {
+          className={isMaintenance ? "relative" : "cursor-pointer relative"}
+          onClick={isMaintenance ? undefined : () => {
             if (JOB_REACTIONS[currentSlug]) {
               setShowReactionBubble(!showReactionBubble);
             } else {
